@@ -1,16 +1,11 @@
-import { Outlet, NavLink, useLocation } from "react-router-dom";
+import { Outlet, NavLink } from "react-router-dom";
 import css from "./Layout.module.css";
 
-const Layout: React.FC = () => {
-  const location = useLocation();
-  const showFavorites =
-  location.pathname === "/nannies" ||
-  location.pathname === "/favorites";
-
+const Layout = () => {
   return (
     <div>
       <header className={css.header}>
-        <div className={css.logo}>НяняСервіс</div>
+        <div className={css.logo}>Nanny.Services</div>
 
         <nav className={css.nav}>
           <NavLink
@@ -29,17 +24,14 @@ const Layout: React.FC = () => {
           >
             Nannies
           </NavLink>
-
-          {showFavorites && (
-            <NavLink
-              to="/favorites"
-              className={({ isActive }) =>
-                isActive ? `${css.link} ${css.activeLink}` : css.link
-              }
-            >
-              Favorites
-            </NavLink>
-          )}
+          <NavLink
+            to="/favorites"
+            className={({ isActive }) =>
+              isActive ? `${css.link} ${css.activeLink}` : css.link
+            }
+          >
+            Favorites
+          </NavLink>
 
           <NavLink to="/login" className={css.buttonLink}>
             Log In
