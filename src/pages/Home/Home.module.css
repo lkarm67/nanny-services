@@ -1,0 +1,264 @@
+.hero {
+    width: 100%;
+    max-width: 1440px;
+    height: 800px;
+    background: #fbfbfb;
+    padding: 32px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.homeBackground{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    border-radius: 30px;
+    width: 100%;
+    height: 736px;
+    background: #0957c3;
+    overflow: hidden;
+    justify-content: flex-start;
+}
+
+.imgWrapper{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 699px;
+    height: 736px;
+}
+
+.imgWrapper img{
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0 30px 30px 0;
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 96px;
+    z-index: 2000;
+    gap: 487px;
+}
+
+.logo{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+    padding: 10px 0;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    gap: 92px;
+    align-items: center;
+
+}
+
+.navLinks{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+}
+
+.link{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+
+    transition: transform 0.3s ease;
+}
+
+.link:hover,
+.link:focus{
+    transform: scale(1.15);
+}
+
+.navButtons{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.buttonLogin,
+.buttonRegistration{
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+
+    transition: transform 0.3s ease;
+}
+
+.buttonLogin{
+    border: 1px solid rgba(251, 251, 251, 0.4);
+}
+
+.buttonLogin:hover,
+.buttonLogin:focus{
+    background-color: #fbfbfb;
+    color: #0957c3;
+    transform: scale(1.05);
+}
+
+.buttonRegistration{
+    background-color: #0957c3;
+}
+
+.buttonRegistration:hover,
+.buttonRegistration:focus{
+    background-color: #fbfbfb;
+    color: #0957c3;
+    transform: scale(1.05);
+}
+
+.devider{
+    position: absolute;
+    top: 88px;
+    width: 100%;
+    z-index: 2000;
+    height: 1px;
+    background: rgba(251, 251, 251, 0.4);
+    margin-bottom: 163px;
+}
+
+.content{
+    position: absolute;
+    top: 251px;
+    left: 98px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    width: 517px;
+    box-sizing: border-box;
+}
+
+.heroTextBox{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 0;
+}
+
+.heroButton{
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    padding: 18px 50px;
+    width: 230px;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+
+    transition: transform 0.3s ease; /* для масштабування кнопки */
+}
+
+.heroButton svg {
+    transition: transform 0.3s ease; /* для обертання стрілки */
+}
+
+.heroButton:hover,
+.heroButton:focus {
+    transform: scale(1.05); /* трохи збільшуємо кнопку */
+}
+
+.heroButton:hover svg,
+.heroButton:focus svg {
+    transform: rotate(50deg); /* обертання стрілки */
+}
+
+.title{
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #fbfbfb;
+}
+
+.description{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+}
+
+.nannyQuantityBox{
+    position: absolute;
+    z-index: 1000;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 24px;
+    background-color: #fbfbfb;
+    padding: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    width: 284px;
+    box-sizing: border-box;
+}
+
+.iconBox{
+    padding: 12px;
+    background-color: #0957c3;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.checkIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 150px;
+}
+.text,
+.quantityText {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.text{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(17, 16, 28, 0.5);
+}
+
+.quantityText{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #11101c;
+}

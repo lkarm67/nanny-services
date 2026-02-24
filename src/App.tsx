@@ -1,7 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
-import HomeLayout from "./components/Layout/HomeLayout";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
 import Nannies from "./pages/Nannies";
 import Favorites from "./pages/Favorites";
 import Login from "./pages/Login";
@@ -11,10 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 const App: React.FC = () => {
   return (
     <Routes>
-  {/* Layout БЕЗ Favorites */}
-  <Route path="/" element={<HomeLayout />}>
-    <Route index element={<Home />} />
-  </Route>
+  <Route path="/" element={<Home />} />
 
   {/* Основний Layout */}
   <Route element={<Layout />}>

@@ -1,0 +1,81 @@
+/* =================== */
+/* GLOBAL RESET & BASE */
+/* =================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #fbfbfb;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* =================== */
+/* HEADINGS & TEXT */
+/* =================== */
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* =================== */
+/* BUTTONS & FORMS */
+/* =================== */
+
+button {
+  cursor: pointer;
+  border: none;
+  background-color: none;
+  font-family: inherit;
+  transition: all 0.2s ease-in-out;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+}
+
+/* =================== */
+/* IMAGES & MEDIA */
+/* =================== */
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* =================== */
+/* GLOBAL COLORS / VARS */
+/* =================== */
+
+:root {
+  --primary-color: #0957c3;
+  --secondary-color: #38cd3e;
+  --accent-color: #ffc531;
+  --text-color: #333;
+  --bg-color: #fbfbfb;
+  --white: #fff;
+  --black: #000;
+  --font-family: 'Helvetica Neue', sans-serif;
+}
