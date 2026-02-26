@@ -1,4 +1,23 @@
+.backdrop{
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    z-index: 100;
+}
+
 .card{
+    border-radius: 30px;
+    max-width: 1184px;
+    background-color: #fbfbfb;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    z-index: 101;
+}
+
+.cardTop{
     border-radius: 30px;
     max-width: 1184px;
     background-color: #fbfbfb;
@@ -18,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .avatar{
@@ -32,10 +52,9 @@
   position: absolute;
   top: 0;
   right: 0;
-  transform: translate(30%, -30%);
-
-  width: 22px;
-  height: 22px;
+  transform: translate(-50%, 50%);
+  width: 14px;
+  height: 14px;
   background-color: white;
   border-radius: 50%;
 
@@ -45,8 +64,8 @@
 }
 
 .onlineInner {
-  width: 12px;
-  height: 12px;
+  width: 10px;
+  height: 10px;
   background-color: #4caf50;
   border-radius: 50%;
 }
@@ -77,7 +96,7 @@
 }
 
 .infoTopName{
-    font-weight: 500;
+    font-weight: 600;
     font-size: 24px;
     line-height: 100%;
     color: #11101c;
@@ -92,7 +111,13 @@
 .infoTopDetailesList{
     display: flex;
     flex-direction: row;
+    align-items: center;
     gap: 16px;
+}
+
+.detailesBox + .detailesBox {
+  border-left: 1px solid rgba(17, 16, 28, 0.2);
+  padding-left: 15px;
 }
 
 .detailesBox{
@@ -104,8 +129,172 @@
 }
 
 .detailesText{  
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     line-height: 150%;
     color: #11101c;
+}
+
+.priceText{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #38cd3e;
+}
+
+.heartButton{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.heartIcon{
+    color: #11101c;
+}
+
+.badgesList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.badgesItem{
+    border-radius: 24px;
+    padding: 8px 16px;
+    background-color: #f3f3f3;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #8a8a89;
+}
+
+.badgeAge{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #11101c;
+}
+
+.badge{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    color: #11101c;
+}
+
+.infoAbout{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(17, 16, 28, 0.5);
+}
+
+.readMoreButton{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    color: #11101c;
+    background-color: #fbfbfb;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: -24px;
+}
+
+.cardBottom {
+    margin-top: 0;
+    margin-left: 168px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.ReviewsList{
+    display: flex;
+    flex-direction: column;
+}
+
+.reviewItem{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+.reviewHeader{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
+}
+
+.reviewAvatar{
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(9, 87, 195, 0.2);
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 100%;
+    color: #0957c3;
+}
+
+.reviewerRating{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.reviewReviewer{
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 125%;
+    color: #11101c;
+}
+
+.starReting{
+    display: flex;
+    flex-direction: row;
+    justify-self: space-between;
+    gap: 8px;
+}
+
+.ratingText{
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 129%;
+    color: #11101c;
+}
+
+.reviewComment{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    color: rgba(17, 16, 28, 0.5);
+}
+
+.makeAppointmentButton{
+    border-radius: 30px;
+    padding: 14px 28px;
+    width: 215px;
+    height: 48px;
+    background-color: #0957c3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
 }

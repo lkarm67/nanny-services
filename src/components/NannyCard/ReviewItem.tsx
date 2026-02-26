@@ -16,16 +16,16 @@ export const ReviewItem: React.FC<ReviewItemProps> = ({ review }) => {
   return (
     <li className={css.reviewItem}>
       <div className={css.reviewHeader}>
-        <div className={css.avatar}>
+        <div className={css.reviewAvatar}>
           {review.reviewer.charAt(0).toUpperCase()}
         </div> 
         <div className={css.reviewerRating}>
           <p className={css.reviewReviewer}>{review.reviewer}</p>
           <div className={css.starReting}>
-            <svg width="16" height="16">
+            <svg className={css.reviewStarReting} width="16" height="16">
               <use href={`${sprite}#icon-star`} />
             </svg>
-            <span className={css.ratingText}>{review.rating}</span>
+            <span className={css.ratingText}> {review.rating}</span>
           </div>
         </div> 
       </div>

@@ -1,5 +1,5 @@
-// NannyCard.tsx
-import React, { useState } from 'react';
+ // NannyCard.tsx
+import React, { useState, useEffect } from 'react';
 import type { Nanny } from '../../types/nannies';
 import css from './NannyCard.module.css';
 import sprite from "../../assets/symbol-defs.svg";
@@ -14,116 +14,154 @@ interface NannyCardProps {
 }
 
 export const NannyCard: React.FC<NannyCardProps> = ({ nanny }) => {
-  const [showReviews, setShowReviews] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const age = useAge(nanny.birthday);
 
-  const handleClick = () => {
-    navigate("/login");
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleEsc = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', handleEsc);
+    
+    return () => {
+        window.removeEventListener('keydown', handleEsc);
+    };
+  }, [isOpen]);
+
+  const handleClick =() => {
+    console.log(`Added ${nanny.name} to favorites!`);
   };
-  
 
   return (
-    <div className={css.card}>
-        <div className={css.avatarWrapper}>
-          <img
-            src={nanny.avatar_url}
-            alt={nanny.name}
-            className={css.avatar}
-          /> 
-          {nanny.isOnline && (
+    <>
+      {isOpen && (
+        <div 
+          className={css.backdrop} 
+          onClick={() => setIsOpen(false)}>
+        </div>
+      )}
+
+      <div className={css.card}>
+        <div className={css.cardTop}>
+          {/* --- ФОТО --- */}
+          <div className={css.avatarWrapper}>
+            <img
+              src={nanny.avatar_url}
+              alt={nanny.name}
+              className={css.avatar}
+              width={120}
+              height={120} 
+            />
+
             <span className={css.onlineOuter}>
               <span className={css.onlineInner}></span>
             </span>
-          )} 
-        </div> 
-        <div className={css.info}>
-          <div className={css.infoTop}>
-            <div className={css.infoTopDetailesFav}>
-              <p className={css.infoTopCategory}>Nanny</p>  
-              <div className={css.infoTopDetailesWrapper}>
-                <ul className={css.infoTopDetailesList}>
-                  <li className={css.detailesBox}> 
-                    <svg width="16" height="16">
-                      <use href={`${sprite}#icon-map-pin`} />
-                    </svg> 
-                    <span className={css.detailesText}>{nanny.location}</span> 
-                  </li>
-                  <li className={css.detailesBox}>
-                    <svg width="16" height="16">
-                      <use href={`${sprite}#icon-star`} />
-                    </svg> 
-                    <span className={css.detailesText}>Rating: {nanny.rating}</span>
-                  </li>
-                  <li className={css.detailesText}>Price / 1 hour: {nanny.price_per_hour}$</li>
-                </ul>
-                <button type="button" className={css.heartButton} onClick={handleClick}>
-                  <svg className={css.heartIcon} width="26" height="26" aria-label="Add to favorites">
-                    <use href={`${sprite}#icon-heart`} />
-                  </svg>
-                </button>
-              </div>
+          </div>  
 
+          {/* --- ГОЛОВНИЙ РЯД (ІНФО) --- */}
+          <div className={css.info}>
+            <div className={css.infoTop}>
+              <div className={css.infoTopDetailesFav}>
+                <p className={css.infoTopCategory}>Nanny</p>  
+                <div className={css.infoTopDetailesWrapper}>
+                  <ul className={css.infoTopDetailesList}>
+                    <li className={css.detailesBox}> 
+                      <svg width="16" height="16">
+                        <use href={`${sprite}#icon-map-pin`} />
+                      </svg> 
+                      <span className={css.detailesText}>{nanny.location}</span> 
+                    </li>
+                  
+                    <li className={css.detailesBox}>
+                      <svg width="16" height="16">
+                        <use href={`${sprite}#icon-star`} />
+                      </svg> 
+                      <span className={css.detailesText}>Rating: {nanny.rating}</span>
+                    </li>                  
+                  
+                    <li className={css.detailesBox}> 
+                      <p className={css.detailesText}>Price / 1 hour:  </p>
+                      <span className={css.priceText}>{nanny.price_per_hour}$</span>
+                    </li>
+                  </ul>
+                  <button type="button" className={css.heartButton} onClick={handleClick}>
+                    <svg className={css.heartIcon} width="26" height="26" aria-label="Add to favorites">
+                      <use href={`${sprite}#icon-heart`} />
+                    </svg>
+                  </button>
+                </div>
+
+              </div>
+              <h3 className={css.infoTopName}>{nanny.name}</h3>  
             </div>
-            <h3 className={css.infoTopName}>{nanny.name}</h3>  
+             
+            <ul className={css.badgesList}>
+              <li className={css.badgesItem}>
+                Age: 
+                <span className={css.badgeAge}>{age}</span>
+              </li>
+              <li className={css.badgesItem}>
+                Experience: 
+                <span className={css.badge}> {nanny.experience}</span>
+              </li>
+              <li className={css.badgesItem}>
+                Kids Age: 
+                <span className={css.badge}> {nanny.kids_age}</span>
+              </li>
+              <li className={css.badgesItem}>
+                Characters: 
+                <span className={css.badge}>{nanny.characters.join(', ')}</span>
+              </li>
+              <li className={css.badgesItem}>
+                Education: 
+                <span className={css.badge}> {nanny.education}</span>
+              </li>
+            </ul>
+
+            <p className={css.infoAbout}>{nanny.about}</p>  
+      
+            <button 
+              onClick={() => setIsOpen(prev => !prev)}
+              className={css.readMoreButton}
+            >
+              {isOpen  ? '' : 'Read more'}
+            </button>
           </div>
-          
-          <ul className={css.badgesList}>
-            <li className={css.badgesItem}>
-              Age:
-              <span className={css.infoTopName}>{age}</span>
-            </li>
-            <li className={css.badgesItem}>
-              Experience: 
-              <span className={css.infoTopName}>{nanny.experience}</span>
-            </li>
-            <li className={css.badgesItem}>
-              Kids Age: 
-              <span className={css.infoTopName}>{nanny.kids_age}</span>
-            </li>
-            <li className={css.badgesItem}>
-              Characters: 
-              <span className={css.infoTopName}>{nanny.characters.join(', ')}</span>
-            </li>
-            <li className={css.badgesItem}>
-              Education: 
-              <span className={css.infoTopName}>{nanny.education}</span>
-            </li>
+        </div>
+      </div>
+      
+      {/* --- НИЖНЯ ЧАСТИНА (РОЗКРИТТЯ) --- */}
+      
+      {isOpen && (
+        <div className={css.cardBottom}>
+
+          <ul className={css.reviewsList}>
+            {nanny.reviews && nanny.reviews.length > 0 ? (
+              nanny.reviews.map((r, i) => (
+                <ReviewItem key={i} review={r} />
+              ))
+            ) : (
+              <p>No reviews yet.</p>
+            )}
           </ul>
 
-          <p className={css.infoAbout}>{nanny.about}</p>
-
-        </div>    
-      
-      {nanny.reviews && nanny.reviews.length > 0 && (
-        <>
-          <button 
-            onClick={() => setShowReviews(prev => !prev)}
-            className={css.readMoreButton}
+          <button
+            onClick={() => navigate("/login")}
+            className={css.makeAppointmentButton}
           >
-            {showReviews ? 'Hide Reviews' : 'Read more'}
-          </button>
-
-          {showReviews && (
-            <ul className={css.reviewsList}>
-              {nanny.reviews.length === 0 ? (
-                <p className={css.noReview}>No review is found.</p>
-              ) : (
-                nanny.reviews.map((r, i) => <ReviewItem key={i} review={r} />)
-           )}
-            </ul>
-  )}
-  
-
-          <button 
-              onClick={() => navigate("/login")}
-              className={css.makeAppointmentButton}
-            >
             Make an appointment
           </button>
-        </>
+
+        </div>
       )}
-    </div>
+    </>
+
   );
 };
 
