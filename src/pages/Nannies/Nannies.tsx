@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { FiltersBlock } from '../../components/FiltersBlock/FiltersBlock';
+import { LoadMoreBtn } from '../../components/LoadMoreBtn/LoadMoreBtn';
 import { NannyCard } from '../../components/NannyCard/NannyCard';
 import type { Nanny } from '../../types/nannies';
 import css from './Nannies.module.css';
@@ -13,14 +15,27 @@ const Nannies: React.FC = () => {
   }, []);
 
   return (
-    <ul className={css.nanniesList}>
-      {nannies.map((nanny) => (
-        <NannyCard 
-          key={`${nanny.name}-${nanny.location}-${nanny.price_per_hour}`} 
-          nanny={nanny} 
-        />
-      ))}
-    </ul>
+    <div className={css.nanniesPage}>
+      <FiltersBlock />
+    
+      <ul className={css.nanniesList}>
+        {nannies.map((nanny) => (
+          <NannyCard 
+            key={`${nanny.name}-${nanny.location}-${nanny.price_per_hour}`} 
+            nanny={nanny} 
+          />
+        ))}
+      </ul>
+      
+      {hasMore && (
+        <LoadMoreBtn
+          onClick={loadMore}
+          disabled={isLoading}
+        >
+          {isLoading ? "Loading..." : "Load more"}
+        </LoadMoreBtn>
+       )}
+    </div>
   );
 };
 
@@ -32,18 +47,3 @@ export default Nannies;
 
 
 
-
-
- /*key={`${nanny.name}-${nanny.location}-${nanny.price_per_hour}`}
-          babysitter={{
-            id: `${nanny.name}-${nanny.location}-${nanny.price_per_hour}`, // тільки для frontend
-            name: nanny.name,
-            avatar_url: nanny.avatar_url,
-            experience: nanny.experience,
-            kids_age: nanny.kids_age,
-            price_per_hour: nanny.price_per_hour,
-            location: nanny.location,
-            about: nanny.about,
-            rating: nanny.rating,
-            isOnline: true, // ⚡ додаємо вручну для UI
-          }}*/

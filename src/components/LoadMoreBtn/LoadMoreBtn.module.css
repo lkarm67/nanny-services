@@ -1,0 +1,24 @@
+.loadMoreButton{
+    border-radius: 30px;
+    border: none;
+    padding: 14px 40px;
+    width: 159px;
+    height: 48px;
+    background-color: #0957c3;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    cursor: pointer;
+
+    transition: transform 0.3s ease;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus{
+    background-color: #fbfbfb;
+    border-color: #0957c3;
+    color: #0957c3;
+    transform: scale(1.05);
+}
