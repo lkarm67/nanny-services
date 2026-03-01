@@ -1,0 +1,29 @@
+.nanniesPage{
+    width: 100%;
+    max-width: 1440px;
+    background-color: #f3f3f3;
+    padding: 64px 128px 100px 128px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.nanniesList {
+    list-style: none;
+    padding: 0;
+    margin: 32px 0 0 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.noNanniesFound{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 125%;
+    letter-spacing: normal;
+    text-align: center;
+    color: #333333;
+}

@@ -16,7 +16,7 @@ const Home: React.FC = () => {
     <section className={css.hero}>
       <div className={css.homeBackground}>
         <header className={css.header}>
-            <div className={css.logo}>Nanny.Services</div>
+            <p className={css.logo}>Nanny.Services</p>
 
             <nav className={css.nav}>
               <div className={css.navLinks}>

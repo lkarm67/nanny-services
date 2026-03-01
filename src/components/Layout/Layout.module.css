@@ -1,0 +1,28 @@
+.header{
+    width: 100%;
+    max-width: 1440px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 128px;
+    z-index: 2000;
+    background-color: #0957c3;
+}
+
+.logo{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+    padding: 10px 0;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    gap: 92px;
+    align-items: center;
+
+}

@@ -1,20 +1,26 @@
-import css from "./LoadMoreBtn.module.css";
 import React from "react";
+import css from "./LoadMoreBtn.module.css";
 
-type LoadMoreBtnProps = {
+interface Props {
   onClick: () => void;
   disabled?: boolean;
-  children?: React.ReactNode; 
-};
+  children?: React.ReactNode;
+}
 
-const LoadMoreBtn = ({ onClick, disabled, children }: LoadMoreBtnProps) => {
+const LoadMoreBtn: React.FC<Props> = ({ onClick, disabled, children }) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.blur(); // знімає фокус після кліку
+    onClick();
+  };
+
   return (
     <button
-      onClick={onClick}
+      type="button"
+      className={css.loadMoreBtn}
+      onClick={handleClick}
       disabled={disabled}
-      className={css.loadMoreButton}
     >
-      {children} {/* ← тут рендериться переданий текст */}
+      {children ?? "Load more"}
     </button>
   );
 };

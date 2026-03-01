@@ -5,7 +5,7 @@ const Layout = () => {
   return (
     <div>
       <header className={css.header}>
-        <div className={css.logo}>Nanny.Services</div>
+        <p className={css.logo}>Nanny.Services</p>
 
         <nav className={css.nav}>
           <NavLink
@@ -33,11 +33,8 @@ const Layout = () => {
             Favorites
           </NavLink>
 
-          <NavLink to="/login" className={css.buttonLink}>
-            Log In
-          </NavLink>
-          <NavLink to="/register" className={css.buttonLink}>
-            Registration
+          <NavLink to="/logout" className={css.buttonLink}>
+            Log Out
           </NavLink>
         </nav>
       </header>

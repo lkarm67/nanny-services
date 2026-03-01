@@ -134,7 +134,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny }) => {
             </button>
           </div>
         </div>
-      </div>
+      
       
       {/* --- НИЖНЯ ЧАСТИНА (РОЗКРИТТЯ) --- */}
       
@@ -160,6 +160,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny }) => {
 
         </div>
       )}
+      </div>
     </>
 
   );
