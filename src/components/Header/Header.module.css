@@ -1,0 +1,111 @@
+.header{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 88px;
+    padding: 20px 128px;
+    z-index: 1000;
+    background-color: #0957c3;
+    border-radius: 0;
+}
+
+.headerContainer{
+    max-width: 1184px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+    padding: 10px 0;
+}
+
+.nav{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+
+}
+
+.link{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+    position: relative;
+
+    transition: transform 0.3s ease;
+}
+
+.activeLink .link {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.activeLink::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.link:hover,
+.link:focus{
+    transform: scale(1.15);
+}
+
+.authBlock{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
+
+.loginBtn,
+.registerBtn{
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    
+    transition: transform 0.3s ease;
+}
+
+.loginBtn{
+    border: 1px solid #0957c3;
+    color: #0957c3;
+}
+  
+.loginBtn:hover,
+.loginBtn:focus{
+    transform: scale(1.05);
+}
+
+.registerBtn{
+    background-color: transparent;
+    color: #fbfbfb;
+    border: 1px solid #fbfbfb;
+}
+
+.registerBtn:hover,
+.registerBtn:focus{
+    transform: scale(1.05);
+}
