@@ -1,12 +1,21 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 
-const Layout = () => {
+interface LayoutProps {
+  openLogin: () => void;
+}
+
+const Layout: React.FC<LayoutProps> = ({ openLogin }) => {
   return (
     <>
-      <Header />
-      <Outlet />
-      
+       <Header
+        user={null}
+        onLogout={() => {}}
+        onLoginClick={openLogin}
+      />
+
+      <Outlet context={{ openLogin }} />
+
     </>
   );
 };

@@ -4,7 +4,11 @@ import heroImage1x from "../../assets/heroImage1x.jpg";
 import heroImage2x from "../../assets/heroImage2x.jpg";
 import sprite from "../../assets/symbol-defs.svg";
 
-const Home: React.FC = () => {
+interface HomeProps {
+  openLogin: () => void;
+}
+
+const Home: React.FC<HomeProps> = ({ openLogin }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -28,9 +32,13 @@ const Home: React.FC = () => {
                 </NavLink>
               </div>
               <div className={css.navButtons}>
-                <NavLink to="/login" className={css.buttonLogin}>
+                <button
+                  className={css.buttonLogin}
+                  onClick={openLogin}
+                >
                   Log In
-                </NavLink>
+                </button>
+                
                 <NavLink to="/register" className={css.buttonRegistration}>
                   Registration
                 </NavLink>

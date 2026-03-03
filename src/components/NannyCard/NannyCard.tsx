@@ -3,19 +3,20 @@ import React, { useState, useEffect } from 'react';
 import type { Nanny } from '../../types/nannies';
 import css from './NannyCard.module.css';
 import sprite from "../../assets/symbol-defs.svg";
-import { useNavigate } from 'react-router-dom';
 import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
 
 
 
 interface NannyCardProps {
-  nanny: Nanny & { reviews?: { reviewer: string; rating: number; comment: string }[] };
+  nanny: Nanny & {
+    reviews?: { reviewer: string; rating: number; comment: string }[];
+  };
+  onLoginClick: () => void;
 }
 
-export const NannyCard: React.FC<NannyCardProps> = ({ nanny }) => {
+export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onLoginClick }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
   const age = useAge(nanny.birthday);
 
   useEffect(() => {
@@ -152,7 +153,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny }) => {
           </ul>
 
           <button
-            onClick={() => navigate("/login")}
+            onClick={onLoginClick}
             className={css.makeAppointmentButton}
           >
             Make an appointment

@@ -9,10 +9,11 @@ interface User {
 
 interface HeaderProps {
   user: User | null;
+  onLoginClick: () => void;
   onLogout: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
+const Header: React.FC<HeaderProps> = ({ user, onLoginClick, onLogout }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -61,7 +62,7 @@ const Header: React.FC<HeaderProps> = ({ user, onLogout }) => {
             <>
               <button
                 className={css.loginBtn}
-                onClick={() => navigate("/login")}
+                onClick={onLoginClick}
               >
                 Log In
               </button>

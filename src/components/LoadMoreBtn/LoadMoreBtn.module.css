@@ -1,10 +1,8 @@
-.loadMoreButton{
+.loadMoreBtn{
     all: unset;
     border-radius: 30px;
-    border: none;
+    border: 1px solid transparent; 
     padding: 14px 40px;
-    width: 159px;
-    height: 48px;
     background-color: #0957c3;
     color: #fff;
     font-weight: 500;
@@ -13,15 +11,15 @@
     letter-spacing: -0.01em;
     cursor: pointer;
     display: flex;
-    align-items: center;
+    align-self: center;
     justify-content: center;
 
     transition: transform 0.3s ease;
     
 }
 
-.loadMoreButton:hover,
-.loadMoreButton:focus{
+.loadMoreBtn:hover,
+.loadMoreBtn:focus{
     background-color: #fbfbfb;
     border-color: #0957c3;
     color: #0957c3;

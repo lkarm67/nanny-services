@@ -3,32 +3,41 @@ import Layout from "./Layout";
 import Home from "./pages/Home/Home";
 import Nannies from "./pages/Nannies/Nannies";
 import Favorites from "./pages/Favorites";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
+import LoginForm from "./components/LoginForm/LoginForm";
 import ProtectedRoute from "./components/ProtectedRoute"; 
+import { useState } from "react";
 
 const App: React.FC = () => {
+  const [isLoginOpen, setIsLoginOpen] = useState(false);
+
+  const openLogin = () => setIsLoginOpen(true);
+  const closeLogin = () => setIsLoginOpen(false);
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
+    <>
+      <Routes>
+        <Route path="/" element={<Home openLogin={openLogin} />} />
       
-      <Route path="/" element={<Layout />}>
-        
-        <Route path="/nannies" element={<Nannies />} />
+        <Route path="/" element={<Layout openLogin={openLogin} />}
+        >        
+          <Route path="/nannies" element={<Nannies />} />
 
-        <Route
-          path="/favorites"
-          element={
-            <ProtectedRoute>
-              <Favorites />
-            </ProtectedRoute>
-          }
-        />
+          <Route
+            path="/favorites"
+            element={
+              <ProtectedRoute>
+                <Favorites />
+              </ProtectedRoute>
+            }
+          />
+        </Route>
+      </Routes>
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Route>
-    </Routes>
+      <LoginForm
+        isOpen={isLoginOpen}
+        onClose={closeLogin}
+      />
+    </>
   );
 };
 
