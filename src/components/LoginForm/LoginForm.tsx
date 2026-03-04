@@ -5,6 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import css from './LoginForm.module.css';
 import sprite from "../../assets/symbol-defs.svg";
 import { createPortal } from "react-dom";
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { auth } from "../../firebase"; // перевір шлях
+
 
 type FormValues = {
   email: string;
@@ -34,10 +37,14 @@ const LoginForm: React.FC<ModalProps> = ({ isOpen, onClose }) => {
 
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const onSubmit = (data: FormValues) => {
-    console.log("Form submitted:", data);
-    reset();
-    onClose();
+  const onSubmit = async (data: FormValues) => {
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      onClose();
+      reset();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   // Close on Esc

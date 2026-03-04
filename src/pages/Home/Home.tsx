@@ -6,9 +6,10 @@ import sprite from "../../assets/symbol-defs.svg";
 
 interface HomeProps {
   openLogin: () => void;
+  openRegister: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ openLogin }) => {
+const Home: React.FC<HomeProps> = ({ openLogin, openRegister }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -39,9 +40,12 @@ const Home: React.FC<HomeProps> = ({ openLogin }) => {
                   Log In
                 </button>
                 
-                <NavLink to="/register" className={css.buttonRegistration}>
+                <button 
+                  className={css.buttonRegistration}
+                  onClick={openRegister}
+                >
                   Registration
-                </NavLink>
+                </button>
               </div>
             </nav>
         </header>

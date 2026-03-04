@@ -4,21 +4,26 @@ import Home from "./pages/Home/Home";
 import Nannies from "./pages/Nannies/Nannies";
 import Favorites from "./pages/Favorites";
 import LoginForm from "./components/LoginForm/LoginForm";
+import RegisterForm from "./components/RegisterForm/RegisterForm";
 import ProtectedRoute from "./components/ProtectedRoute"; 
 import { useState } from "react";
 
 const App: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);
+  const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
   const openLogin = () => setIsLoginOpen(true);
   const closeLogin = () => setIsLoginOpen(false);
 
+  const openRegister = () => setIsRegisterOpen(true);
+const closeRegister = () => setIsRegisterOpen(false);
+
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home openLogin={openLogin} />} />
+        <Route path="/" element={<Home openLogin={openLogin} openRegister={openRegister} />} />
       
-        <Route path="/" element={<Layout openLogin={openLogin} />}
+        <Route path="/" element={<Layout openLogin={openLogin} openRegister={openRegister} />}
         >        
           <Route path="/nannies" element={<Nannies />} />
 
@@ -33,6 +38,11 @@ const App: React.FC = () => {
         </Route>
       </Routes>
 
+      <RegisterForm
+        isOpen={isRegisterOpen}
+        onClose={closeRegister}
+      />
+      
       <LoginForm
         isOpen={isLoginOpen}
         onClose={closeLogin}
