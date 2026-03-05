@@ -17,9 +17,12 @@ import { useNanniesQuery } from "../../hooks/useNanniesQuery";
 import { processNannies } from "../../utils/nannyQueryProcessor";
 import css from "./Nannies.module.css"
 import LoaderDots from "../../components/LoaderDots/LoaderDots";
+import { formatKey } from "../../utils/favoritesUtils";
+import { getAuth } from "firebase/auth";
 
 type LayoutContextType = {
   openLogin: () => void;
+  openRegister: () => void;
 };
 
 const Nannies: React.FC = () => {
@@ -71,6 +74,9 @@ const Nannies: React.FC = () => {
 
   const options = Object.keys(filterLabels) as FilterOption[];
 
+  const auth = getAuth();
+  const user = auth.currentUser;
+
   return (
     <div className={css.nanniesPage}>
       <FiltersBlock
@@ -91,8 +97,9 @@ const Nannies: React.FC = () => {
             ) : (
               visible.map((nanny: Nanny) => (
                 <NannyCard
-                  key={`${nanny.name}-${nanny.location}-${nanny.price_per_hour}`}
+                  key={formatKey(nanny)}
                   nanny={nanny}
+                  isLoggedIn={!!user}
                   onLoginClick={openLogin}
                 />
               ))

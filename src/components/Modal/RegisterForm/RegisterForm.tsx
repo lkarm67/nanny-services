@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from './RegisterForm.module.css';
-import sprite from "../../assets/symbol-defs.svg";
+import sprite from "../../../assets/symbol-defs.svg";
 import { createPortal } from "react-dom";
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../firebase";
+import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
+import { auth } from "../../../firebase";
 import { FirebaseError } from "firebase/app";
 
 type FormValues = {
@@ -46,6 +46,10 @@ const RegisterForm: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         data.email,
         data.password
       );
+
+      await updateProfile(userCredential.user, {
+        displayName: data.name,
+      });
 
       console.log("User registered:", userCredential.user);
 

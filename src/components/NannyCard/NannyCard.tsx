@@ -1,23 +1,42 @@
- // NannyCard.tsx
 import React, { useState, useEffect } from 'react';
 import type { Nanny } from '../../types/nannies';
 import css from './NannyCard.module.css';
 import sprite from "../../assets/symbol-defs.svg";
 import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
-
-
+import { useFavorites } from "../../context/FavoritesContext";
+import { formatKey } from '../../utils/favoritesUtils';
+/*import { toggleFavoriteInFirebase } from '../../services/favoritesService';*/
 
 interface NannyCardProps {
   nanny: Nanny & {
     reviews?: { reviewer: string; rating: number; comment: string }[];
   };
+  isLoggedIn: boolean;
   onLoginClick: () => void;
 }
 
-export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onLoginClick }) => {
+export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onLoginClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const age = useAge(nanny.birthday);
+  const { favorites, toggleFavorite } = useFavorites();
+
+  const isFavorite = favorites.includes(formatKey(nanny));
+
+  const handleFavorite = async () => {
+
+    if (!isLoggedIn) {
+      onLoginClick();
+      return;
+    }
+
+    const key = formatKey(nanny);
+
+    toggleFavorite(key);
+
+    /*await toggleFavoriteInFirebase(key, isFavorite);*/
+  };
+
 
   useEffect(() => {
     if (!isOpen) return;
@@ -34,10 +53,6 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onLoginClick }) => 
         window.removeEventListener('keydown', handleEsc);
     };
   }, [isOpen]);
-
-  const handleClick =() => {
-    console.log(`Added ${nanny.name} to favorites!`);
-  };
 
   return (
     <>
@@ -91,8 +106,11 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onLoginClick }) => 
                       <span className={css.priceText}>{nanny.price_per_hour}$</span>
                     </li>
                   </ul>
-                  <button type="button" className={css.heartButton} onClick={handleClick}>
-                    <svg className={css.heartIcon} width="26" height="26" aria-label="Add to favorites">
+                  <button type="button" 
+                    className={css.heartButton} 
+                    onClick={handleFavorite}
+                  >
+                    <svg className={isFavorite ? css.heartActive : css.heartIcon} width="26" height="26" aria-label="Add to favorites">
                       <use href={`${sprite}#icon-heart`} />
                     </svg>
                   </button>

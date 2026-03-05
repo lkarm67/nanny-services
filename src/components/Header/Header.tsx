@@ -1,29 +1,26 @@
 import React from 'react';
 import { NavLink, useNavigate  } from "react-router-dom";
 import css from "./Header.module.css";
-
-interface User {
-  name: string;
-  avatar: string;
-}
+import { signOut } from "firebase/auth";
+import type { User } from "firebase/auth";
+import { auth } from "../../firebase";
+import sprite from "../../assets/symbol-defs.svg";
 
 interface HeaderProps {
   user: User | null;
   onLoginClick: () => void;
   onRegisterClick: () => void;
-  onLogout: () => void;
 }
 
 const Header: React.FC<HeaderProps> = ({ 
   user, 
   onLoginClick,
   onRegisterClick,
-  onLogout 
 }) => {
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    onLogout();
+  const handleLogout = async () => {
+    await signOut(auth);
     navigate("/");
   };
 
@@ -81,12 +78,14 @@ const Header: React.FC<HeaderProps> = ({
             </>
           ) : (
             <div className={css.profile}>
-              <img
-                src={user.avatar}
-                alt={user.name}
-                className={css.avatar}
-              />
-              <span className={css.username}>{user.name}</span>
+              <div className={css.userBox}>
+                <svg className={css.userIcon} width="24" height="24">
+                  <use href={`${sprite}#icon-mdi_user`} />
+                </svg>
+              </div>
+              <span className={css.username}>
+                {user?.displayName ?? "User"}
+              </span>
               <button
                 onClick={handleLogout}
                 className={css.logoutBtn}

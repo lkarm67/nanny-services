@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from './LoginForm.module.css';
-import sprite from "../../assets/symbol-defs.svg";
+import sprite from "../../../assets/symbol-defs.svg";
 import { createPortal } from "react-dom";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
-import { auth } from "../../firebase"; // перевір шлях
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase"; // перевір шлях
 
 
 type FormValues = {
@@ -43,6 +43,7 @@ const LoginForm: React.FC<ModalProps> = ({ isOpen, onClose }) => {
       onClose();
       reset();
     } catch (error) {
+      alert("Invalid email or password");
       console.error(error);
     }
   };
