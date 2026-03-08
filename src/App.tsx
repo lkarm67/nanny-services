@@ -3,7 +3,7 @@ import Layout from "./Layout";
 import Home from "./pages/Home/Home";
 import Nannies from "./pages/Nannies/Nannies";
 import Favorites from "./pages/Favorites";
-import LoginForm from "./components/Modal/LoginForm/LoginForm";
+import { LoginForm } from "./components/Modal/LoginForm/LoginForm";
 import RegisterForm from "./components/Modal/RegisterForm/RegisterForm";
 import ProtectedRoute from "./components/ProtectedRoute"; 
 import { useState } from "react";
