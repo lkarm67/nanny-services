@@ -110,14 +110,53 @@
     transform: scale(1.05);
 }
 
-.userBox {
-  width: 40px;
-  height: 40px;
+.profile{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.userBox{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
 
-  background: #f3f3f3;
-  border-radius: 10px;
+.userIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f3f3;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.username{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 111%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.logoutBtn{
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    padding: 14px 39px;
+    background-color: transparent;
+    height: 48px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus{
+    transform: scale(1.05);
 }

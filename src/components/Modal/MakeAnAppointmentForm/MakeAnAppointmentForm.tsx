@@ -1,243 +1,293 @@
-import React, { useEffect } from 'react';
-import { useForm } from "react-hook-form";
+import React, { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import css from './LoginForm.module.css';
-import sprite from "../../assets/symbol-defs.svg";
-import { createPortal } from "react-dom";
-import type { Nanny } from '../../types/nannies';
+import toast from "react-hot-toast";
+import css from "./MakeAnAppointmentForm.module.css";
+import sprite from "../../../assets/symbol-defs.svg";
+import type { Nanny } from "../../../types/nannies";
+import { ModalForm } from "../ModalForm/ModalForm";
 
 type FormValues = {
-    address: string;
-    phone: string;
-    childAge: number;
-    meetingTime: string;
-    email: string;
-    parentName: string;
-    comments: string;
+  address: string;
+  phone: string;
+  childAge: number;
+  meetingTime: string;
+  email: string;
+  parentName: string;
+  comments: string;
 };
 
 const schema = yup.object({
-    address: yup.string().required("Address is required"),
-    phone: yup.string().required("Phone number is required"),
-    childAge: yup.number().required("Child's age is required").positive("Age must be a positive number"),
-    meetingTime: yup.string().required("Preferred meeting time is required"),
-    email: yup.string().email("Invalid email format").required("Email is required"),
-    parentName: yup.string().required("Father's or mother's name is required"),
-    comments: yup.string().min(2).max(500, "Comments must be at most 500 characters long").required("Comments are required"),
+  address: yup.string().required("Address is required"),
+  phone: yup
+    .string()
+    .matches(
+      /^(\+?\d{1,3}[-.\s]?)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/,
+      "Invalid phone number format"
+    )
+    .required("Phone number is required"),
+  childAge: yup
+    .number()
+    .typeError("Child's age is required")
+    .positive("Age must be a positive number")
+    .required(),
+  meetingTime: yup
+    .string()
+    .matches(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/, "Format HH:MM")
+    .required("Preferred meeting time is required"),
+  email: yup.string().email("Invalid email format").required("Email is required"),
+  parentName: yup.string().required("Father's or mother's name is required"),
+  comments: yup
+    .string()
+    .min(2)
+    .max(500, "Comments must be at most 500 characters long")
+    .required("Comments are required"),
 });
 
 interface ModalProps {
-    isOpen: boolean;
-    onClose: () => void;
-    nanny: Nanny & {
-      name: string;
-      avatar_url: string;
-    };
+  isOpen: boolean;
+  onClose: () => void;
+  nanny: Nanny & {
+    name: string;
+    avatar_url: string;
+  };
   onMakeAppointmentClick: () => void;
 }
 
 const timeOptions = [
-    "09:00", 
-    "09:30", 
-    "10:00", 
-    "10:30",
-    "11:00",
-    "11:30", 
-    "12:00",
-    "12:30",
-    "13:00",
-    "13:30",
-    "14:00",
-    "14:30",
-    "16:00",
-    "16:30",
-    "17:00",
-    "17:30",
-    "18:00",
-    "18:30",
+  "09:00","09:30","10:00","10:30",
 ];
 
+export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
+  isOpen,
+  onClose,
+  nanny,
+}) => {
 
-const MakeAnAppointmentForm: React.FC<ModalProps> = ({ isOpen, onClose, nanny, onMakeAppointmentClick }) => {
-    const [showTimer, setShowTimer] = React.useState(false);
-    const {
-        handleSubmit,
-        reset,
-        formState: { errors },
-    } = useForm<FormValues>({
-        resolver: yupResolver(schema),
-    });
+  const [isTimeOptionsShow, setIsTimeOptionsShow] = useState(false);
 
-    const onSubmit = (data: FormValues) => {
-        console.log("Form submitted:", data);
-        reset();
-        onClose();
-        onMakeAppointmentClick();
-    };
-    
-      // Close on Esc
-    useEffect(() => {
-        if (!isOpen) return;
-        const handleEsc = (e: KeyboardEvent) => {
-          if (e.key === "Escape") onClose();
-        };
-        document.addEventListener("keydown", handleEsc);
-        document.body.style.overflow = "hidden";
-    
-        return () => {
-          document.removeEventListener("keydown", handleEsc);
-          document.body.style.overflow = "";
-        };
-    }, [isOpen, onClose]);
-    
-    if (!isOpen) return null;
+  const {
+    register,
+    handleSubmit,
+    reset,
+    setValue,
+    trigger,
+    control,
+    formState: { errors },
+  } = useForm<FormValues>({
+    resolver: yupResolver(schema),
+  });
 
+  const meetingTime = useWatch({
+    control,
+    name: "meetingTime",
+  });
 
+  const handleTimeSelect = (time: string) => {
+    setValue("meetingTime", time);
+    trigger("meetingTime");
+    setIsTimeOptionsShow(false);
+  };
 
-    return createPortal(
-        <div className={css.backdrop} onClick={onClose}>  
-            <div className={css.modal} onClick={(e) => e.stopPropagation()}>
-                <button className={css.closeButton} onClick={onClose}>
-                    <svg className={css.closeIcon} width="32" height="32">
-                        <use href={`${sprite}#icon-x`} />
-                    </svg>
+  const onSubmit = () => {
+    toast.success("Your appointment request has been sent!");
+    reset();
+    onClose();
+  };
+
+  const handleClose = () => {
+    reset();
+    onClose();
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <ModalForm
+      isOpen={isOpen}
+      onClose={handleClose}
+      className={css.makeAnAppointmentModal}
+    >
+      <div className={css.modalContentWrapper}>
+
+        <div className={css.modalHeader}>
+          <h2 className={css.modalTitle}>
+            Make an appointment with a babysitter
+          </h2>
+
+          <p className={css.modalDescription}>
+            Arranging a meeting with a caregiver for your child is the first
+            step to creating a safe and comfortable environment. Fill out the
+            form below so we can match you with the perfect care partner.
+          </p>
+        </div>
+
+        <div className={css.nannyInfo}>
+          <img
+            src={nanny.avatar_url}
+            alt={nanny.name}
+            className={css.nannyPhoto}
+          />
+
+          <div className={css.nannyName}>
+            <p className={css.nannyNameText}>Your nanny</p>
+            <p className={css.nannyNameSubtitle}>{nanny.name}</p>
+          </div>
+        </div>
+
+        <form onSubmit={handleSubmit(onSubmit)} className={css.modalForm}>
+
+          <div className={css.fieldsWrapper}>
+            <div className={css.modalFieldGroup}>
+              <input
+                type="text"
+                className={css.modalInput}
+                placeholder="Address"
+                {...register("address")}
+              />
+
+              {errors.address && (
+                <p className={css.error}>{errors.address.message}</p>
+              )}
+            </div>
+
+            <div className={css.modalFieldGroup}>
+              <input
+                type="tel"
+                className={css.modalInput}
+                placeholder="+380"
+                {...register("phone")}
+              />
+
+              {errors.phone && (
+                <p className={css.error}>{errors.phone.message}</p>
+              )}
+            </div>
+          </div>
+
+          <div className={css.fieldsWrapper}>
+            <div className={css.modalFieldGroup}>
+              <input
+                type="number"
+                className={css.modalInput}
+                placeholder="Child's age"
+                {...register("childAge")}
+              />
+
+              {errors.childAge && (
+                <p className={css.error}>{errors.childAge.message}</p>
+              )}
+            </div>
+
+            <div className={css.modalFieldGroup}>
+              <div className={css.modalInputWrapper}>
+
+                <input
+                  type="text"
+                  className={css.modalInput}
+                  placeholder="00:00"
+                  readOnly
+                  value={meetingTime || ""}
+                  {...register("meetingTime")}
+                  onClick={() =>
+                    setIsTimeOptionsShow((prev) => !prev)
+                  }
+                />
+
+                <button
+                  type="button"
+                  className={css.clockToggle}
+                  onClick={() =>
+                    setIsTimeOptionsShow((prev) => !prev)
+                  }
+                  aria-label="Select time"
+                >
+                  <svg
+                    className={css.clockIcon}
+                    viewBox="0 0 32 32"
+                    width="20"
+                    height="20"
+                  >
+                    <use href={`${sprite}#icon-clock`} />
+                  </svg>
                 </button>
 
-                <div className={css.wrapper}>
-                    <div className={css.content}>
-                        <h2 className={css.title}>Make an appointment with a babysitter</h2>
-                        <p className={css.description}>
-                            Arranging a meeting with a caregiver for your child is 
-                            the first step to creating a safe and comfortable environment. 
-                            Fill out the form below so we can match you with the 
-                            perfect care partner.
-                        </p>
-                    </div>
+                {isTimeOptionsShow && (
+                  <div className={`${css.dropdown} ${isOpen ? css.open : ""}`}>  
+                    <p className={css.timeOptionsTitle}>Meeting time</p>  
+                    <ul className={css.timeOptions}>
+                      {timeOptions.map((time) => (
+                        <li
+                          key={time}
+                          className={`${css.option} ${time === meetingTime ? css.active : ""}`}
+                          onClick={() => handleTimeSelect(time)}
+                        >
+                          {time}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
 
-                    <div className={css.nannyInfo}>
-                        <img 
-                            src={nanny.avatar_url} 
-                            alt="Nanny" 
-                            className={css.nannyPhoto} 
-                        />
-
-                        <div className={css.nannyName}>
-                            <p className={css.nannyNameText}></p>
-                            <p className={css.nannyNameSubtitle}>{nanny.name}</p>
-                        </div>
-                    </div>
-
-                    <form onSubmit={handleSubmit(onSubmit)} className={css.form}>
-                        <div className={css.fieldsWrapper}>
-                            <div className={css.fieldGroup}>
-                                <input 
-                                    type="address" 
-                                    className={css.inputShort} 
-                                    placeholder='Address' 
-                                />
-
-                                {errors.address && 
-                                    <p className={css.error}>{errors.address.message}</p>
-                                }
-                            </div>
-
-                            <div className={css.fieldGroup}>
-                                <input 
-                                    type="phone" 
-                                    className={css.inputShort} 
-                                    placeholder='+380' 
-                                />
-
-                                {errors.phone && 
-                                    <p className={css.error}>{errors.phone.message}</p>
-                                }
-                            </div>
-                        </div>
-
-                        <div className={css.fieldsWrapper}>
-                            <div className={css.fieldGroup}>
-                                <input 
-                                    type="age" 
-                                    className={css.inputShort} 
-                                    placeholder="Child's age" 
-                                />
-
-                                {errors.childAge && 
-                                    <p className={css.error}>{errors.childAge.message}</p>
-                                }
-                            </div>
-
-                            <div className={css.fieldGroup}>
-                                <div className={css.inputWrapper}>
-                                    <input 
-                                        type="time" 
-                                        className={css.inputShort} 
-                                        placeholder='00:00' 
-                                    />
-
-                                    <button 
-                                        type="button" 
-                                        className={css.passwordToggle} 
-                                        onClick={() => setShowTimer((prev) => !prev)}
-                                        aria-label="Toggle password visibility"
-                                    >
-                                        <svg className={css.passwordIcon} viewBox="0 0 32 32" width="20" height="20">
-                                            <use href={`${sprite}#icon-clock`} />
-                                        </svg>
-                                    </button>
-                                </div>
-
-                                {errors.meetingTime && 
-                                    <p className={css.error}>{errors.meetingTime.message}</p>
-                                }
-                            </div>
-                        </div>
-
-                        <div className={css.fieldGroup}>
-                            <input 
-                                type="email" 
-                                className={css.input} 
-                                placeholder='Email' 
-                            />
-
-                            {errors.email && 
-                                <p className={css.error}>{errors.email.message}</p>
-                            }
-                        </div>
-
-                        <div className={css.fieldGroup}>
-                            <input 
-                                type="name" 
-                                className={css.input} 
-                                placeholder="Father's or mother's name" 
-                            />
-
-                            {errors.parentName && 
-                                <p className={css.error}>{errors.parentName.message}</p>
-                            }
-                        </div>
-
-                        <div className={css.fieldGroup}>
-                            <textarea 
-                                className={css.textarea} 
-                                placeholder='Comments' 
-                            />
-
-                            {errors.comments && 
-                                <p className={css.error}>{errors.comments.message}</p>
-                            }
-                        </div>  
-
-                        <button type="submit" className={css.submitButton}>
-                            Comment
-                        </button>                      
-                    </form>
-                </div>
+              {errors.meetingTime && (
+                <p className={css.error}>{errors.meetingTime.message}</p>
+              )}
             </div>
-        </div>,
-        document.getElementById("modal-root") as HTMLElement
-    );
+          </div>
+
+          <div className={css.modalFieldGroup}>
+            <input
+              type="email"
+              className={css.modalInput}
+              placeholder="Email"
+              {...register("email")}
+            />
+
+            {errors.email && (
+              <p className={css.error}>{errors.email.message}</p>
+            )}
+          </div>
+
+          <div className={css.fieldGroup}>
+            <input
+              type="text"
+              className={css.modalInput}
+              placeholder="Father's or mother's name"
+              {...register("parentName")}
+            />
+
+            {errors.parentName && (
+              <p className={css.error}>{errors.parentName.message}</p>
+            )}
+          </div>
+
+          <div className={css.fieldGroup}>
+            <textarea
+              className={css.textarea}
+              placeholder="Comments"
+              {...register("comments")}
+            />
+
+            {errors.comments && (
+              <p className={css.error}>{errors.comments.message}</p>
+            )}
+          </div>
+
+          <button 
+            type="submit" 
+            className={css.submitButton} 
+        >
+            Send
+          </button>
+
+
+
+        </form>
+      </div>
+    </ModalForm>
+  );
 };
 
 export default MakeAnAppointmentForm;

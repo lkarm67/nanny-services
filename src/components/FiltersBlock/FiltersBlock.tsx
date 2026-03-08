@@ -51,7 +51,10 @@ export const FiltersBlock = <T extends keyof typeof filterLabels>({
 
       <ul className={`${css.dropdown} ${isOpen ? css.open : ""}`}>
         {options.map(option => (
-          <li key={option} className={`${css.option} ${option === value ? css.active : ""}`}>
+          <li
+            key={option} 
+            className={`${css.option} ${option === value ? css.active : ""}`}
+          >
             <button
               type="button"
               className={css.optionBtn}

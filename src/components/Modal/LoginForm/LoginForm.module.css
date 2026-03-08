@@ -6,6 +6,13 @@
     display: flex;
     flex-direction: column;
     align-items: start;
+    gap: 40px;
+}
+
+.modalHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     gap: 20px;
 }
 
@@ -107,6 +114,9 @@ input:-webkit-autofill {
     cursor: pointer;
 }
 
+.modalSubmitButton:hover{
+    background: #0749a1;
+}
 
 
 

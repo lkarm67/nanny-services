@@ -41,9 +41,9 @@ export const LoginForm: React.FC<Props> = ({ isOpen, onClose }) => {
   };
 
   const handleClose = () => {
-  reset();
-  onClose();
-};
+    reset();
+    onClose();
+  };
   
   if (!isOpen) return null;
 
@@ -52,12 +52,13 @@ export const LoginForm: React.FC<Props> = ({ isOpen, onClose }) => {
 
       <div className={css.modalContentWrapper}>
 
-        <h2 className={css.modalTitle}>Log In</h2>
-
-        <p className={css.modalDescription}>
-          Welcome back! Please enter your credentials to access your account
-          and continue your babysitter search.
-        </p>
+        <div className={css.modalHeader}>
+          <h2 className={css.modalTitle}>Log In</h2>
+          <p className={css.modalDescription}>
+            Welcome back! Please enter your credentials to access your account
+            and continue your babysitter search.
+          </p>
+        </div>      
 
         <form onSubmit={handleSubmit(onSubmit)} className={css.modalForm}>
 

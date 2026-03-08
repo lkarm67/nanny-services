@@ -79,18 +79,20 @@ const Header: React.FC<HeaderProps> = ({
           ) : (
             <div className={css.profile}>
               <div className={css.userBox}>
-                <svg className={css.userIcon} width="24" height="24">
-                  <use href={`${sprite}#icon-mdi_user`} />
-                </svg>
+                <div className={css.userIcon}>
+                  <svg  width="24" height="24">
+                    <use href={`${sprite}#icon-mdi_user`} />
+                  </svg>
+                </div>
+                <span className={css.username}>
+                  {user?.displayName ?? "User"}
+                </span> 
               </div>
-              <span className={css.username}>
-                {user?.displayName ?? "User"}
-              </span>
               <button
                 onClick={handleLogout}
                 className={css.logoutBtn}
               >
-                Logout
+                Log out
               </button>
             </div>
           )}

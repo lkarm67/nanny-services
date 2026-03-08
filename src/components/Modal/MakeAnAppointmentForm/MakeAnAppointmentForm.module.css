@@ -1,3 +1,175 @@
 .makeAnAppointmentModal{
   width: 600px;  
 }
+
+.modalContentWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+
+.modalHeader{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 20px;
+}
+
+.modalTitle{
+    font-weight: 600;
+    font-size: 40px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    color: #11101c;
+}
+
+.modalDescription{
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: rgba(17, 16, 28, 0.5);
+}
+
+.nannyInfo{
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+}
+
+.nannyPhoto{
+    width: 44px;
+    height: 44px;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.nannyName{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nannyNameText{
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 133%;
+    color: #8a8a89;
+}
+
+.nannyNameSubtitle{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #11101c;
+}
+
+.modalForm{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    width: 100%;
+}
+
+.fieldsWrapper{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 8px;
+}
+
+.modalFieldGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.modalInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.modalInput{
+    border: 1px solid rgba(17, 16, 28, 0.1);
+    border-radius: 12px;
+    padding: 16px 40px 16px 18px;
+    width: 100%;
+    height: 52px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: #11101c;
+}
+
+.error{
+    color: #f03f3b;
+    font-size: 10px;
+}
+
+.clockToggle{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.clockIcon{
+    width: 20px;
+    height: 20px;
+    stroke: #11101C;
+    fill: none;
+    pointer-events: none;
+}
+
+.dropdown{
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    fill: #fff;
+    box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.open{
+    display: block;
+}
+
+.timeOptions{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    
+
+}
+
+.modalSubmitButton{
+    margin-top: 20px;
+    background: #0957c3;
+    border-radius: 30px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 16px 18px;
+    cursor: pointer;
+}
+
+
+
+.modalSubmitButton:hover{
+    background: #0749a1;
+}

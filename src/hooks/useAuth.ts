@@ -13,7 +13,7 @@ export const useAuth = () => {
       setLoading(false);
     });
 
-    return unsubscribe;
+    return () => unsubscribe();
   }, []);
 
   return { user, loading };
