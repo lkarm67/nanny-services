@@ -52,7 +52,7 @@ interface ModalProps {
     name: string;
     avatar_url: string;
   };
-  onMakeAppointmentClick: () => void;
+  onMakeAppointmentClick: (nanny: Nanny) => void;
 }
 
 const timeOptions = [
@@ -142,7 +142,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
             <div className={css.modalFieldGroup}>
               <input
                 type="text"
-                className={css.modalInput}
+                className={errors.address ? css.modalInputError : css.modalInput}
                 placeholder="Address"
                 {...register("address")}
               />
@@ -155,7 +155,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
             <div className={css.modalFieldGroup}>
               <input
                 type="tel"
-                className={css.modalInput}
+                className={errors.phone ? css.modalInputError : css.modalInput}
                 placeholder="+380"
                 {...register("phone")}
               />
@@ -170,7 +170,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
             <div className={css.modalFieldGroup}>
               <input
                 type="number"
-                className={css.modalInput}
+                className={errors.childAge ? css.modalInputError : css.modalInput}
                 placeholder="Child's age"
                 {...register("childAge")}
               />
@@ -185,7 +185,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
 
                 <input
                   type="text"
-                  className={css.modalInput}
+                  className={errors.meetingTime ? css.modalInputError : css.modalInput}
                   placeholder="00:00"
                   readOnly
                   value={meetingTime || ""}
@@ -214,16 +214,19 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
                 </button>
 
                 {isTimeOptionsShow && (
-                  <div className={`${css.dropdown} ${isOpen ? css.open : ""}`}>  
+                  <div className={css.dropdown}> 
                     <p className={css.timeOptionsTitle}>Meeting time</p>  
                     <ul className={css.timeOptions}>
-                      {timeOptions.map((time) => (
+                      {timeOptions.map((meetingTime) => (
                         <li
-                          key={time}
-                          className={`${css.option} ${time === meetingTime ? css.active : ""}`}
-                          onClick={() => handleTimeSelect(time)}
+                          key={meetingTime}
+                          className={css.meetingTime}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleTimeSelect(meetingTime);
+                          }}
                         >
-                          {time}
+                          {meetingTime}
                         </li>
                       ))}
                     </ul>
@@ -240,7 +243,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
           <div className={css.modalFieldGroup}>
             <input
               type="email"
-              className={css.modalInput}
+              className={errors.email ? css.modalInputError : css.modalInput}
               placeholder="Email"
               {...register("email")}
             />
@@ -253,7 +256,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
           <div className={css.fieldGroup}>
             <input
               type="text"
-              className={css.modalInput}
+              className={errors.parentName ? css.modalInputError : css.modalInput}
               placeholder="Father's or mother's name"
               {...register("parentName")}
             />
@@ -265,7 +268,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
 
           <div className={css.fieldGroup}>
             <textarea
-              className={css.textarea}
+              className={errors.comments ? css.modalInputError : css.textarea}
               placeholder="Comments"
               {...register("comments")}
             />
@@ -277,7 +280,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
 
           <button 
             type="submit" 
-            className={css.submitButton} 
+            className={css.modalSubmitButton} 
         >
             Send
           </button>

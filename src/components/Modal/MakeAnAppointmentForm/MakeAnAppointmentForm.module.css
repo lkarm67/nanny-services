@@ -1,5 +1,8 @@
 .makeAnAppointmentModal{
-  width: 600px;  
+  width: 600px;
+  margin: auto;
+  max-height: 90vh;
+  overflow-y: auto;  
 }
 
 .modalContentWrapper{
@@ -90,7 +93,8 @@
   align-items: center;
 }
 
-.modalInput{
+.modalInput,
+.modalInputError {
     border: 1px solid rgba(17, 16, 28, 0.1);
     border-radius: 12px;
     padding: 16px 40px 16px 18px;
@@ -100,6 +104,41 @@
     font-size: 16px;
     line-height: 125%;
     color: #11101c;
+}
+
+.textarea{
+     border: 1px solid rgba(17, 16, 28, 0.1);
+    border-radius: 12px;
+    padding: 16px 40px 16px 18px;
+    width: 100%;
+    height: 116px;
+    resize: none;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    color: #11101c;
+}
+
+.modalInput:focus,
+.textarea:focus {
+    outline: none;
+    border-color: #0957c3;
+}
+
+.modalInputError{
+    border: 1px solid #f03f3b;
+}
+
+.modalInput[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.modalInput[type="number"]::-webkit-inner-spin-button,
+.modalInput[type="number"]::-webkit-outer-spin-button {
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .error{
@@ -130,29 +169,53 @@
 }
 
 .dropdown{
-    position: fixed;
-    top: 0;
+    position: absolute;
+    top: 60px;
     right: 0;
-    width: 100%;
-    height: 100%;
+    width: 151px;
     border-radius: 12px;
-    fill: #fff;
+    padding: 16px;
+    background-color: #fff;
     box-shadow: 0 20px 69px 0 rgba(0, 0, 0, 0.07);
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
 
-.open{
-    display: block;
+.timeOptionsTitle{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: #11101c;
+    text-align: left;
 }
 
 .timeOptions{
-    position: absolute;
-    top: 100%;
-    left: 0;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 16px;
+    background-color: #fff;
+    border-radius: 12px;
+}
 
+.meetingTime{
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    text-align: center;
+    color: rgba(17, 16, 28, 0.3);
+}
+
+.meetingTime:hover{
+    color: #11101c;
+}
+
+.textarea{
+    height: 116px;
+    resize: none;
 }
 
 .modalSubmitButton{
@@ -167,8 +230,6 @@
     padding: 16px 18px;
     cursor: pointer;
 }
-
-
 
 .modalSubmitButton:hover{
     background: #0749a1;

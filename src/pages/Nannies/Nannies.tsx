@@ -23,12 +23,13 @@ import { getAuth } from "firebase/auth";
 type LayoutContextType = {
   openLogin: () => void;
   openRegister: () => void;
+  openMakeAppointment: (nanny: Nanny) => void;
 };
 
 const Nannies: React.FC = () => {
   const [nannies, setNannies] = useState<Nanny[]>([]);
   const [loading, setLoading] = useState(true);
-  const { openLogin } = useOutletContext<LayoutContextType>();
+  const { openMakeAppointment } = useOutletContext<LayoutContextType>();
   const [selectedOption, setSelectedOption] =
     useState<FilterOption>("aToZ");
 
@@ -100,7 +101,7 @@ const Nannies: React.FC = () => {
                   key={formatKey(nanny)}
                   nanny={nanny}
                   isLoggedIn={!!user}
-                  onLoginClick={openLogin}
+                  onMakeAnAppointmentClick={openMakeAppointment}
                 />
               ))
             )}

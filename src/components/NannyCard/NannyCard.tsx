@@ -6,7 +6,7 @@ import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
 import { useFavorites } from "../../context/FavoritesContext";
 import { formatKey } from '../../utils/favoritesUtils';
-import { MakeAnAppointmentForm } from '../Modal/MakeAnAppointmentForm/MakeAnAppointmentForm';
+
 /*import { toggleFavoriteInFirebase } from '../../services/favoritesService';*/
 
 interface NannyCardProps {
@@ -14,12 +14,10 @@ interface NannyCardProps {
     reviews?: { reviewer: string; rating: number; comment: string }[];
   };
   isLoggedIn: boolean;
-  onMakeAnAppointmentClick: () => void;
+  onMakeAnAppointmentClick: (nanny: Nanny) => void;
 }
 
-export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeAnAppointmentClick }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  
+export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onMakeAnAppointmentClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const age = useAge(nanny.birthday);
   const { favorites, toggleFavorite } = useFavorites();
@@ -28,10 +26,10 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
 
   const handleFavorite = async () => {
 
-    if (!isLoggedIn) {
-      onMakeAnAppointmentClick();
+   /* if (!isLoggedIn) {
+      onMakeAnAppointmentClick(nanny);
       return;
-    }
+    }*/
 
     const key = formatKey(nanny);
 
@@ -174,7 +172,13 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
           </ul>
 
           <button
-            onClick={() => setIsModalOpen(true)}
+            onClick={() => {
+              onMakeAnAppointmentClick(nanny);
+            }}
+           /*} onClick={() => {
+              setIsOpen(false);
+              setIsModalOpen(true);
+            }}*/
             className={css.makeAppointmentButton}
           >
             Make an appointment
@@ -184,12 +188,12 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
       )}
 
       {/* --- МОДАЛЬНЕ ВІКНО ЗАПИСУ НА ПРИЙОМ --- */}
-      <MakeAnAppointmentForm 
+      {/*<MakeAnAppointmentForm 
         isOpen={isModalOpen} 
         onClose={() => setIsModalOpen(false)}
         nanny={nanny} 
         onMakeAppointmentClick={() => setIsModalOpen(false)} 
-      />
+      />*/}
       </div>
     </>
 
