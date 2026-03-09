@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import Header from "./components/Header/Header";
 import type { User } from "firebase/auth";
 import type { Nanny } from "./types/nannies";
-import type { LayoutContextType } from "../types/layoutContext";
+import type { LayoutContextType } from "./types/layoutContext";
 
 interface LayoutProps {
   user: User | null;
@@ -20,7 +20,7 @@ const Layout: React.FC<LayoutProps> = ({ user, openLogin, openRegister, openMake
         onLoginClick={openLogin}
       />
 
-      <Outlet context={{ openLogin, openRegister, openMakeAppointment }} />
+      <Outlet context={{ openLogin, openRegister, openMakeAppointment } as LayoutContextType}  />
 
     </>
   );
