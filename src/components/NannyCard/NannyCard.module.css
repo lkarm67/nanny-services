@@ -154,9 +154,8 @@
 .heartIcon {
   width: 26px;
   height: 26px; 
-  color: #11101c; 
   fill: transparent;
-  stroke: currentColor;
+  stroke: #11101c;
   transition: transform 0.25s ease, fill 0.25s ease, stroke 0.25s ease;
 }
 
@@ -173,9 +172,8 @@
 }
 
 .heartActive {
-  color: #0957c3;
-  fill: currentColor;
-  stroke: currentColor;
+  fill: #0957c3;
+  stroke: transparent;
   animation: heartPulse 0.35s ease;
 }
 

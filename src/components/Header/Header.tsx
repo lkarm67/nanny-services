@@ -17,6 +17,7 @@ const Header: React.FC<HeaderProps> = ({
   onLoginClick,
   onRegisterClick,
 }) => {
+  console.log("HEADER USER:", user);
   const navigate = useNavigate();
 
   const handleLogout = async () => {

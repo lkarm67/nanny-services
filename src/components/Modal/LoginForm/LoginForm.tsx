@@ -5,6 +5,8 @@ import * as yup from "yup";
 import { useState } from "react";
 import css from "./LoginForm.module.css";
 import sprite from "../../../assets/symbol-defs.svg";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase";
 
 interface Props {
   isOpen: boolean;
@@ -27,6 +29,7 @@ export const LoginForm: React.FC<Props> = ({ isOpen, onClose }) => {
     register,
     handleSubmit,
     reset,
+    setError,
     formState: { errors },
   } = useForm<FormValues>({
     resolver: yupResolver(schema),
@@ -34,11 +37,26 @@ export const LoginForm: React.FC<Props> = ({ isOpen, onClose }) => {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const onSubmit = (data: FormValues) => {
-    console.log(data);
+  const onSubmit = async (data: FormValues) => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      data.email,
+      data.password
+    );
+
+    console.log("LOGIN SUCCESS:", userCredential.user);
+
     reset();
     onClose();
-  };
+  } catch (error) {
+    console.error("LOGIN ERROR:", error);
+    setError("password", {
+      type: "manual",
+      message: "Invalid email or password",
+    });
+  }
+};
 
   const handleClose = () => {
     reset();

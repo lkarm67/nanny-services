@@ -9,6 +9,7 @@ export const useAuth = () => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+      console.log("AUTH USER:", firebaseUser);
       setUser(firebaseUser);
       setLoading(false);
     });

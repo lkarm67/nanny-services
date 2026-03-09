@@ -14,7 +14,7 @@ interface NannyCardProps {
     reviews?: { reviewer: string; rating: number; comment: string }[];
   };
   isLoggedIn: boolean;
-  onMakeAnAppointmentClick: (nanny: Nanny) => void;
+  onMakeAnAppointmentClick?: (nanny: Nanny) => void;
 }
 
 export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onMakeAnAppointmentClick }) => {
@@ -173,7 +173,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onMakeAnAppointment
 
           <button
             onClick={() => {
-              onMakeAnAppointmentClick(nanny);
+              onMakeAnAppointmentClick?.(nanny);
             }}
            /*} onClick={() => {
               setIsOpen(false);

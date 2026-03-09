@@ -1,53 +1,33 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
+import { useNannies } from "../../hooks/useNannies";
 import { FiltersBlock } from "../../components/FiltersBlock/FiltersBlock";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { NannyCard } from "../../components/NannyCard/NannyCard";
 import type { Nanny } from "../../types/nannies";
 import {
   filterMap,
-  filterLabels,
   type FilterOption,
   PriceFilterType,
   SortType,
 } from "../../types/filters";
 import { useOutletContext } from "react-router-dom";
-
-import { getNannies } from "../../services/nanniesService";
+import type { LayoutContextType } from "../../types/layoutContext";
 import { useNanniesQuery } from "../../hooks/useNanniesQuery";
 import { processNannies } from "../../utils/nannyQueryProcessor";
 import css from "./Nannies.module.css"
 import LoaderDots from "../../components/LoaderDots/LoaderDots";
 import { formatKey } from "../../utils/favoritesUtils";
-import { getAuth } from "firebase/auth";
+import { useAuth } from "../../hooks/useAuth";
 
-type LayoutContextType = {
-  openLogin: () => void;
-  openRegister: () => void;
-  openMakeAppointment: (nanny: Nanny) => void;
-};
+
 
 const Nannies: React.FC = () => {
-  const [nannies, setNannies] = useState<Nanny[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { nannies, loading } = useNannies();
   const { openMakeAppointment } = useOutletContext<LayoutContextType>();
   const [selectedOption, setSelectedOption] =
     useState<FilterOption>("aToZ");
 
   const [query, updateQuery] = useNanniesQuery();
-
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-      setLoading(true);
-      const data = await getNannies();
-      setNannies(data);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  fetchData();
-}, []);
 
   const processed = useMemo(
     () => processNannies(nannies, query),
@@ -73,13 +53,12 @@ const Nannies: React.FC = () => {
     });
   };
 
-  const options = Object.keys(filterLabels) as FilterOption[];
+  const options = Object.keys(filterMap) as FilterOption[];
 
-  const auth = getAuth();
-  const user = auth.currentUser;
+  const { user } = useAuth();
 
   return (
-    <div className={css.nanniesPage}>
+    <div className={css.Page}>
       <FiltersBlock
         value={selectedOption}
         options={options}
