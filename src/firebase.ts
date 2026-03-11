@@ -15,6 +15,9 @@ const firebaseConfig = {
   messagingSenderId: "1091584778793", 
 
   appId: "1:1091584778793:web:e2b366e38064466186f238", 
+
+  databaseURL: "https://nanny-app-592ca-default-rtdb.europe-west1.firebasedatabase.app",
+
 };    
 
 const app = initializeApp(firebaseConfig);

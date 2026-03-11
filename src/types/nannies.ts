@@ -1,8 +1,9 @@
 export interface Nanny {
+  id: string;
   name: string;
   avatar_url: string;
   birthday: string;
-  experience: number;
+  experience: string;
   reviews?: {
     reviewer: string;
     rating: number;

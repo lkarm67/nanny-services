@@ -20,6 +20,7 @@ import { useNannies } from "../hooks/useNannies";
 const Favorites: React.FC = () => {
   const { favorites } = useFavorites();
   const { nannies, loading } = useNannies();
+  
   const { user } = useAuth();
   const { openMakeAppointment } = useOutletContext<LayoutContextType>();
 
@@ -31,7 +32,7 @@ const Favorites: React.FC = () => {
 
    // Фільтрація та сортування на основі вибраного фільтра
   const processedFavorites = useMemo(() => {
-    const favs = nannies.filter(nanny => favorites.includes(formatKey(nanny)));
+    const favs = nannies.filter(nanny => favorites.includes(nanny.id));
     const updates = filterMap[selectedOption];
     let sorted = [...favs];
 

@@ -3,7 +3,6 @@ import { useNannies } from "../../hooks/useNannies";
 import { FiltersBlock } from "../../components/FiltersBlock/FiltersBlock";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import { NannyCard } from "../../components/NannyCard/NannyCard";
-import type { Nanny } from "../../types/nannies";
 import {
   filterMap,
   type FilterOption,
@@ -16,7 +15,6 @@ import { useNanniesQuery } from "../../hooks/useNanniesQuery";
 import { processNannies } from "../../utils/nannyQueryProcessor";
 import css from "./Nannies.module.css"
 import LoaderDots from "../../components/LoaderDots/LoaderDots";
-import { formatKey } from "../../utils/favoritesUtils";
 import { useAuth } from "../../hooks/useAuth";
 
 
@@ -57,6 +55,8 @@ const Nannies: React.FC = () => {
 
   const { user } = useAuth();
 
+  console.log(nannies)
+
   return (
     <div className={css.Page}>
       <FiltersBlock
@@ -75,9 +75,9 @@ const Nannies: React.FC = () => {
                 No nannies found for the selected filter
               </p>
             ) : (
-              visible.map((nanny: Nanny) => (
-                <NannyCard
-                  key={formatKey(nanny)}
+              visible.map(nanny => (
+                <NannyCard 
+                  key={nanny.id} 
                   nanny={nanny}
                   isLoggedIn={!!user}
                   onMakeAnAppointmentClick={openMakeAppointment}

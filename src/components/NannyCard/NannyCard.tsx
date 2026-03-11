@@ -5,7 +5,6 @@ import sprite from "../../assets/symbol-defs.svg";
 import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
 import { useFavorites } from "../../context/FavoritesContext";
-import { formatKey } from '../../utils/favoritesUtils';
 
 /*import { toggleFavoriteInFirebase } from '../../services/favoritesService';*/
 
@@ -17,25 +16,35 @@ interface NannyCardProps {
   onMakeAnAppointmentClick?: (nanny: Nanny) => void;
 }
 
-export const NannyCard: React.FC<NannyCardProps> = ({ nanny, onMakeAnAppointmentClick }) => {
+export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeAnAppointmentClick }) => {
   const [isOpen, setIsOpen] = useState(false);
   const age = useAge(nanny.birthday);
   const { favorites, toggleFavorite } = useFavorites();
 
-  const isFavorite = favorites.includes(formatKey(nanny));
+  const isFavorite = favorites.includes(nanny.id);
 
-  const handleFavorite = async () => {
+ /* const handleFavorite = async () => {
 
    /* if (!isLoggedIn) {
       onMakeAnAppointmentClick(nanny);
       return;
-    }*/
+    }
 
     const key = formatKey(nanny);
 
     toggleFavorite(key);
 
-    /*await toggleFavoriteInFirebase(key, isFavorite);*/
+    /*await toggleFavoriteInFirebase(key, isFavorite);
+  }; */
+
+  const handleFavorite = () => {
+
+    if (!isLoggedIn) {
+      alert("Only authorized users can add favorites");
+      return;
+    }
+
+    toggleFavorite(nanny.id);
   };
 
 
