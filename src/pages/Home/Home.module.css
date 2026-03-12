@@ -54,6 +54,21 @@
     padding: 10px 0;
 }
 
+.burger{
+    color: #fbfbfb;
+    padding: 16px;
+    background-color: transparent;
+}
+
+.menu {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
 .nav{
     display: flex;
     flex-direction: row;

@@ -1,0 +1,189 @@
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  min-width: 320px;
+
+  background-color: #0957c3;
+  z-index: 9999;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.open {
+  transform: translateY(0);
+}
+
+.mobileMenu {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.closeBtn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #fbfbfb;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.menuContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;padding: 160px;
+}
+
+.logo{
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+    padding: 10px 0;
+}
+
+.nav{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+
+}
+
+.link{
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+    position: relative;
+
+    transition: transform 0.3s ease;
+}
+
+.activeLink {
+    position: relative;
+}
+
+.activeLink::after {
+  content: "";
+  position: absolute;
+  bottom: -10px; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  background-color: currentColor;
+  border-radius: 50%;
+}
+
+.link:hover,
+.link:focus{
+    transform: scale(1.15);
+}
+
+.authBlock{
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+}
+
+.loginBtn,
+.registerBtn{
+    border-radius: 30px;
+    padding: 14px 40px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    
+    transition: transform 0.3s ease;
+}
+
+.loginBtn{
+    background-color: #fbfbfb;
+    color: #0957c3;
+    border: none;
+}
+  
+.loginBtn:hover,
+.loginBtn:focus{
+    transform: scale(1.05);
+}
+
+.registerBtn{
+    background-color: transparent;
+    color: #fbfbfb;
+    border: 1px solid #fbfbfb;
+}
+
+.registerBtn:hover,
+.registerBtn:focus{
+    transform: scale(1.05);
+}
+
+.profile{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.userBox{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    align-items: center;
+}
+
+.userIcon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f3f3;
+    border-radius: 10px;
+    padding: 8px;
+}
+
+.username{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 111%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.logoutBtn{
+    border: 1px solid #fbfbfb;
+    border-radius: 30px;
+    padding: 14px 39px;
+    background-color: transparent;
+    height: 48px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+}
+
+.logoutBtn:hover,
+.logoutBtn:focus{
+    transform: scale(1.05);
+}

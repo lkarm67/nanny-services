@@ -1,10 +1,11 @@
-import React from 'react';
-import { NavLink, useNavigate  } from "react-router-dom";
+import { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
 import { signOut } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { auth } from "../../firebase";
 import sprite from "../../assets/symbol-defs.svg";
+import MobileMenu from "../MobileMenu/MobileMenu";
 
 interface HeaderProps {
   user: User | null;
@@ -12,12 +13,12 @@ interface HeaderProps {
   onRegisterClick: () => void;
 }
 
-const Header: React.FC<HeaderProps> = ({ 
-  user, 
+const Header: React.FC<HeaderProps> = ({
+  user,
   onLoginClick,
   onRegisterClick,
 }) => {
-  console.log("HEADER USER:", user);
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogout = async () => {
@@ -27,9 +28,10 @@ const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className={css.header}>
-      <div className={`container ${css.headerContainer}`}>  
+      <div className={`container ${css.headerContainer}`}>
         <p className={css.logo}>Nanny.Services</p>
 
+        {/* Desktop navigation */}
         <nav className={css.nav}>
           <NavLink
             to="/"
@@ -61,15 +63,14 @@ const Header: React.FC<HeaderProps> = ({
           )}
         </nav>
 
+        {/* Auth block */}
         <div className={css.authBlock}>
           {!user ? (
             <>
-              <button
-                className={css.loginBtn}
-                onClick={onLoginClick}
-              >
+              <button className={css.loginBtn} onClick={onLoginClick}>
                 Log In
               </button>
+
               <button
                 className={css.registerBtn}
                 onClick={onRegisterClick}
@@ -81,14 +82,16 @@ const Header: React.FC<HeaderProps> = ({
             <div className={css.profile}>
               <div className={css.userBox}>
                 <div className={css.userIcon}>
-                  <svg  width="24" height="24">
+                  <svg width="24" height="24">
                     <use href={`${sprite}#icon-mdi_user`} />
                   </svg>
                 </div>
+
                 <span className={css.username}>
-                  {user?.displayName ?? "User"}
-                </span> 
+                  {user?.displayName || "User"}
+                </span>
               </div>
+
               <button
                 onClick={handleLogout}
                 className={css.logoutBtn}
@@ -97,11 +100,32 @@ const Header: React.FC<HeaderProps> = ({
               </button>
             </div>
           )}
-        </div>  
-      </div>  
-    </header>
+        </div>
 
-    );
-};  
+        
+        {/* Burger */}
+        <button
+          className={css.burger}
+          onClick={() => setIsOpen(true)}
+          aria-label="Open menu"
+        >
+          <svg className={css.menu} width="32" height="32">
+            <use href={`${sprite}#icon-menu`}></use>
+          </svg>
+        </button>
+
+        {/* Mobile menu */}
+        {isOpen && (
+          <MobileMenu
+            user={user}
+            onClose={() => setIsOpen(false)}
+            onLoginClick={onLoginClick}
+            onRegisterClick={onRegisterClick}
+          />
+        )}
+      </div>
+    </header>
+  );
+};
 
 export default Header;

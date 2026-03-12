@@ -1,16 +1,21 @@
+import { useState } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import css from "./Home.module.css";
+import MobileMenu from "../../components/MobileMenu/MobileMenu";
+import type { User } from "firebase/auth";
 import heroImage1x from "../../assets/heroImage1x.jpg";
 import heroImage2x from "../../assets/heroImage2x.jpg";
 import sprite from "../../assets/symbol-defs.svg";
 
 interface HomeProps {
-  openLogin: () => void;
-  openRegister: () => void;
+    user: User | null;
+    onLoginClick: () => void;
+    onRegisterClick: () => void;
 }
 
-const Home: React.FC<HomeProps> = ({ openLogin, openRegister }) => {
+const Home: React.FC<HomeProps> = ({ user, onLoginClick, onRegisterClick }) => {
   const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
     navigate("/nannies");
@@ -23,6 +28,7 @@ const Home: React.FC<HomeProps> = ({ openLogin, openRegister }) => {
         <header className={css.header}>
             <p className={css.logo}>Nanny.Services</p>
 
+            {/* Desktop menu */}
             <nav className={css.nav}>
               <div className={css.navLinks}>
                 <NavLink to="/" className={css.link}>
@@ -35,19 +41,40 @@ const Home: React.FC<HomeProps> = ({ openLogin, openRegister }) => {
               <div className={css.navButtons}>
                 <button
                   className={css.buttonLogin}
-                  onClick={openLogin}
+                  onClick={onLoginClick}
                 >
                   Log In
                 </button>
                 
                 <button 
                   className={css.buttonRegistration}
-                  onClick={openRegister}
+                  onClick={onRegisterClick}
                 >
                   Registration
                 </button>
               </div>
             </nav>
+            
+            {/* Burger */}
+            <button
+              className={css.burger}
+              onClick={() => setIsOpen(true)}
+              aria-label="Open menu"
+            >
+              <svg className={css.menu} width="32" height="32">
+                <use href={`${sprite}#icon-menu`}></use>
+              </svg>
+            </button>
+
+            {/* Mobile menu */}
+            {isOpen && (
+              <MobileMenu
+                user={user}
+                onClose={() => setIsOpen(false)}
+                onLoginClick={onLoginClick}
+                onRegisterClick={onRegisterClick}
+              />
+            )}
         </header>
       
         <hr className={css.devider} />
