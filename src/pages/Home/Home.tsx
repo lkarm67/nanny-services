@@ -79,6 +79,21 @@ const Home: React.FC<HomeProps> = ({ user, onLoginClick, onRegisterClick }) => {
       
         <hr className={css.devider} />
 
+        <div className={css.content}>
+          <div className={css.heroTextBox}>
+            <h1 className={css.title}>Make Life Easier for the Family:</h1>
+            <p className={css.description}>
+              Find Babysitters Online for All Occasions
+            </p>
+          </div>
+          <button className={css.heroButton} onClick={handleClick}>
+            Get started
+            <svg width="14" height="16">
+              <use href={`${sprite}#icon-Arrow`} />
+            </svg>
+          </button>
+        </div>
+
         <div className={css.imgWrapper}>
           <img
             src={heroImage1x}
@@ -99,21 +114,6 @@ const Home: React.FC<HomeProps> = ({ user, onLoginClick, onRegisterClick }) => {
             <p className={css.text}>Experienced nannies</p>
             <p className={css.quantityText}>15,000</p>
           </div>
-        </div>
-
-        <div className={css.content}>
-          <div className={css.heroTextBox}>
-            <h1 className={css.title}>Make Life Easier for the Family:</h1>
-            <p className={css.description}>
-              Find Babysitters Online for All Occasions
-            </p>
-          </div>
-          <button className={css.heroButton} onClick={handleClick}>
-            Get started
-            <svg width="14" height="16">
-              <use href={`${sprite}#icon-Arrow`} />
-            </svg>
-          </button>
         </div>
       </div>
     </section>

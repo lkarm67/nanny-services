@@ -1,4 +1,204 @@
-.hero {
+.hero{
+    max-width: 767px;
+    width: 100%; 
+    background: #fbfbfb;
+    padding: 32px;
+    margin: 0 auto;
+    box-sizing: border-box; 
+}
+
+.homeBackground{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 764px;
+    height: 736px;
+    background-color: #0957c3;
+    border-radius: 30px;
+
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+   
+}
+
+.logo{
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 117%;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+    padding: 10px 0;
+}
+
+.nav{
+    display: none;
+}
+
+.navButtons{
+    display: none;
+}
+
+.burger{
+    color: #fbfbfb;
+    padding: 16px;
+    background-color: transparent;
+}
+
+.menu {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    stroke-width: 0;
+    stroke: currentColor;
+    fill: currentColor;
+}
+
+.content{
+    position: absolute;
+    top: 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.heroTextBox{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 28px;
+    margin-bottom: 0;
+}
+
+.title{
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    color: #fbfbfb;
+}
+
+.description{
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 28px;
+    letter-spacing: -0.02em;
+    color: #fbfbfb;
+}
+
+.heroButton{
+    border: 1px solid rgba(251, 251, 251, 0.4);
+    border-radius: 30px;
+    padding: 18px 50px;
+    width: 230px;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 120%;
+    letter-spacing: -0.01em;
+    color: #fbfbfb;
+
+    transition: transform 0.3s ease; 
+}
+
+.heroButton svg {
+    transition: transform 0.3s ease; 
+}
+
+.heroButton:hover,
+.heroButton:focus {
+    transform: scale(1.05); 
+}
+
+.heroButton:hover svg,
+.heroButton:focus svg {
+    transform: rotate(50deg); 
+}
+
+
+.imgWrapper {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+
+.nannyQuantityBox{
+    position: absolute;
+    z-index: 1000;
+    right: 50px;
+    bottom: 50px;
+    border-radius: 24px;
+    background-color: #fbfbfb;
+    padding: 32px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    width: 284px;
+    box-sizing: border-box;
+}
+
+.iconBox{
+    padding: 12px;
+    background-color: #0957c3;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.checkIcon{
+    width: 30px;
+    height: 30px;
+}
+
+.textBox{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 150px;
+}
+.text,
+.quantityText {
+    margin: 0;
+    line-height: 1.2;
+}
+
+.text{
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 16px;
+    color: rgba(17, 16, 28, 0.5);
+}
+
+.quantityText{
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 24px;
+    color: #11101c;
+}
+
+
+
+/*.hero {
     width: 100%;
     max-width: 1440px;
     height: 800px;
@@ -62,8 +262,8 @@
 
 .menu {
   display: inline-block;
-  width: 32px;
-  height: 32px;
+  width: 1em;
+  height: 1em;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
@@ -188,22 +388,20 @@
     letter-spacing: -0.01em;
     color: #fbfbfb;
 
-    transition: transform 0.3s ease; /* для масштабування кнопки */
+    transition: transform 0.3s ease; 
 }
 
 .heroButton svg {
-    transition: transform 0.3s ease; /* для обертання стрілки */
-}
+    transition: transform 0.3s ease; 
 
 .heroButton:hover,
 .heroButton:focus {
-    transform: scale(1.05); /* трохи збільшуємо кнопку */
+    transform: scale(1.05); 
 }
 
 .heroButton:hover svg,
 .heroButton:focus svg {
-    transform: rotate(50deg); /* обертання стрілки */
-}
+    transform: rotate(50deg); 
 
 .title{
     font-weight: 500;
@@ -277,4 +475,4 @@
     font-size: 24px;
     line-height: 24px;
     color: #11101c;
-}
+}*/
