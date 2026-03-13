@@ -1,12 +1,32 @@
 .header{
-    position: fixed;
     top: 0;
     width: 100%;
+    max-width: 1440px;
     height: 88px;
     padding: 20px 40px;
     z-index: 1000;
     background-color: #0957c3;
     border-radius: 0;
+    transition: background-color 0.3s ease;
+    border-bottom: #fbfbfb;
+}
+
+.homeHeader {
+  background: transparent;
+  position: absolute;
+  border-bottom: 1px solid #fbfbfb;
+  top: 6px;
+}
+
+.scrolledHeader {
+  position: fixed;
+  background: #0957c3;
+  backdrop-filter: blur(6px);
+}
+
+.defaultHeader {
+  position: fixed;
+  background: #0957c3;
 }
 
 .headerContainer{
@@ -36,14 +56,14 @@
 
 .burger{
     color: #fbfbfb;
-    padding: 16px;
+    padding: 0 48px;
     background-color: transparent;
 }
 
 .menu {
     display: inline-block;
-    width: 28px;
-    height: 28px;
+    width: 24px;
+    height: 24px;
     stroke-width: 0;
     stroke: currentColor;
     fill: currentColor;

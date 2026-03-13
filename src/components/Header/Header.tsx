@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
 import { signOut } from "firebase/auth";
@@ -11,15 +11,32 @@ interface HeaderProps {
   user: User | null;
   onLoginClick: () => void;
   onRegisterClick: () => void;
+  variant?: "home" | "default";
 }
 
 const Header: React.FC<HeaderProps> = ({
   user,
   onLoginClick,
   onRegisterClick,
+  variant = "default",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleLogout = async () => {
     await signOut(auth);
@@ -27,7 +44,16 @@ const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className={css.header}>
+    <header
+      className={`${css.header}
+      ${
+        variant === "home"
+          ? isScrolled
+            ? css.scrolledHeader
+            : css.homeHeader
+          : css.defaultHeader
+      }`}
+    >
       <div className={`container ${css.headerContainer}`}>
         <p className={css.logo}>Nanny.Services</p>
 

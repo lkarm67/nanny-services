@@ -1,73 +1,29 @@
 .hero{
-    max-width: 767px;
+    max-width: 1440px;
     width: 100%; 
     background: #fbfbfb;
-    padding: 32px;
+    padding: 16px 0;
     margin: 0 auto;
     box-sizing: border-box; 
 }
 
 .homeBackground{
-    position: relative;
     display: flex;
     flex-direction: column;
-    max-width: 764px;
-    height: 736px;
+    gap: 24px;
+    width: 100%;
+    height: 772px;
     background-color: #0957c3;
-    border-radius: 30px;
-
-}
-
-.header{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-   
-}
-
-.logo{
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 117%;
-    letter-spacing: -0.02em;
-    color: #fbfbfb;
-    padding: 10px 0;
-}
-
-.nav{
-    display: none;
-}
-
-.navButtons{
-    display: none;
-}
-
-.burger{
-    color: #fbfbfb;
-    padding: 16px;
-    background-color: transparent;
-}
-
-.menu {
-    display: inline-block;
-    width: 28px;
-    height: 28px;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
+    border-radius: 20px;
 }
 
 .content{
-    position: absolute;
-    top: 160px;
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    gap: 24px;
     width: 100%;
-    box-sizing: border-box;
-    padding: 20px;
+    padding: 0 32px;
+    margin-top: 100px;
 }
 
 .heroTextBox{
@@ -80,7 +36,7 @@
 
 .title{
     font-weight: 500;
-    font-size: 50px;
+    font-size: 40px;
     line-height: 0.95;
     letter-spacing: -0.03em;
     color: #fbfbfb;
@@ -88,7 +44,7 @@
 
 .description{
     font-weight: 400;
-    font-size: 28px;
+    font-size: 20px;
     line-height: 28px;
     letter-spacing: -0.02em;
     color: #fbfbfb;
@@ -131,33 +87,52 @@
 }
 
 
-.imgWrapper {
+.imgWrapper{
     width: 100%;
-    height: auto;
-    object-fit: contain;
+    height: 700px; /* висота для мобілки */
+    overflow: hidden;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
 
+.image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
 
 .nannyQuantityBox{
     position: absolute;
     z-index: 1000;
-    right: 50px;
-    bottom: 50px;
+    right: 16px;
+    bottom: 42px;
     border-radius: 24px;
     background-color: #fbfbfb;
-    padding: 32px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 16px;
-    width: 284px;
+    width: 200px;
     box-sizing: border-box;
 }
 
+@media screen and (min-width: 360px){
+    .hero{
+        padding: 16px;
+    }
+    
+    .nannyQuantityBox{
+        bottom: 58px;
+        right: 38px;
+    }
+}
+
 .iconBox{
-    padding: 12px;
+    padding: 10px;
     background-color: #0957c3;
-    border-radius: 16px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,15 +140,15 @@
 }
 
 .checkIcon{
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 24px;
 }
 
 .textBox{
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 150px;
+    width: 120px;
 }
 .text,
 .quantityText {
@@ -182,18 +157,35 @@
 }
 
 .text{
-    font-family: var(--font-family);
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     color: rgba(17, 16, 28, 0.5);
 }
 
 .quantityText{
-    font-family: var(--font-family);
     font-weight: 700;
-    font-size: 24px;
-    line-height: 24px;
+    font-size: 20px;
+    line-height: 20px;
     color: #11101c;
+}
+
+@media screen and (min-width: 1280px){
+
+.homeBackground{
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 60px 80px;
+}
+
+.content{
+    max-width: 500px;
+}
+
+.imgWrapper{
+    max-width: 600px;
+}
+
 }
 
 

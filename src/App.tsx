@@ -38,12 +38,6 @@ const App: React.FC = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={
-          <Home
-            openLogin={openLogin} 
-            openRegister={openRegister} 
-            />
-        } />
       
         <Route path="/" element={
           <Layout 
@@ -53,6 +47,17 @@ const App: React.FC = () => {
             openMakeAppointment={handleMakeAppointmentClick} 
           />
         }>
+
+          <Route
+            index
+            element={
+              <Home
+                user={user}
+                onLoginClick={openLogin}
+                onRegisterClick={openRegister}
+              />
+            }
+          />
 
           <Route path="/nannies" element={<Nannies />} />
 
