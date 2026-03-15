@@ -1,21 +1,27 @@
 .header{
-    top: 0;
-    width: 100%;
-    max-width: 1440px;
-    height: 88px;
-    padding: 20px 40px;
-    z-index: 1000;
-    background-color: #0957c3;
-    border-radius: 0;
-    transition: background-color 0.3s ease;
-    border-bottom: #fbfbfb;
+  top: 0;
+  width: 100%;
+  max-width: 1440px;
+  height: 88px;
+  padding: 20px 80px 20px 20px;
+  z-index: 1000;
+  background-color: #0957c3;
+  border-radius: 0;
+  transition: background-color 0.3s ease;
+  border-bottom: #fbfbfb;
 }
 
 .homeHeader {
   background: transparent;
   position: absolute;
   border-bottom: 1px solid #fbfbfb;
-  top: 6px;
+  top: 18px;
+}
+
+@media screen and (min-width: 340px){
+  .homeHeader{
+    padding: 20px 80px 20px 40px;
+  }
 }
 
 .scrolledHeader {
@@ -71,13 +77,18 @@
 
 /* TABLET */
 @media screen and (min-width: 768px){
-
-  .header{
-    padding: 20px;
+  .homeHeader{
+    padding: 25px 40px;
   }
 
   .burger{
     display: none;
+  }
+
+  .headerContent{
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
   }
 
   .nav{
@@ -214,7 +225,16 @@
 }  
 
 /* DESKTOP */
-@media screen and (min-width: 1280px){
+@media screen and (min-width: 1024px){
+  .homeheader{
+    height: 104px;
+    padding: 36px ;
+  }
+
+  .headerContent{
+    gap: 92px;
+  }
+  
   .link
   .loginBtn,
   .registerBtn,
@@ -228,5 +248,17 @@
 
   .nav{
     gap: 40px;
+  }
+
+  .loginBtn{
+    border: 1px solid #fbfbfb;
+    color: #fbfbfb;
+    background-color: transparent;
+  }
+
+  .registerBtn{
+    background-color: #0957c3;
+    color: #fbfbfb;
+    border: none;
   }
 }

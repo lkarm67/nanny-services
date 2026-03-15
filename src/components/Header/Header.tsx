@@ -57,75 +57,77 @@ const Header: React.FC<HeaderProps> = ({
       <div className={`container ${css.headerContainer}`}>
         <p className={css.logo}>Nanny.Services</p>
 
-        {/* Desktop navigation */}
-        <nav className={css.nav}>
-          <NavLink
-            to="/"
-            className={({ isActive }) =>
-              isActive ? `${css.link} ${css.activeLink}` : css.link
-            }
-          >
-            Home
-          </NavLink>
-
-          <NavLink
-            to="/nannies"
-            className={({ isActive }) =>
-              isActive ? `${css.link} ${css.activeLink}` : css.link
-            }
-          >
-            Nannies
-          </NavLink>
-
-          {user && (
+        <div className={css.headerContent}>
+          {/* Desktop navigation */}
+          <nav className={css.nav}>
             <NavLink
-              to="/favorites"
+              to="/"
               className={({ isActive }) =>
                 isActive ? `${css.link} ${css.activeLink}` : css.link
               }
             >
-              Favorites
+              Home
             </NavLink>
-          )}
-        </nav>
+  
+            <NavLink
+              to="/nannies"
+              className={({ isActive }) =>
+                isActive ? `${css.link} ${css.activeLink}` : css.link
+              }
+            >
+              Nannies
+            </NavLink>
+ 
+            {user && (
+              <NavLink
+                to="/favorites"
+                className={({ isActive }) =>
+                  isActive ? `${css.link} ${css.activeLink}` : css.link
+                }
+              >  
+                Favorites
+            </NavLink>
+            )}
+          </nav>
+  
+          {/* Auth block */}
+          <div className={css.authBlock}>
+            {!user ? (
+              <>
+                <button className={css.loginBtn} onClick={onLoginClick}>
+                  Log In
+                </button>
 
-        {/* Auth block */}
-        <div className={css.authBlock}>
-          {!user ? (
-            <>
-              <button className={css.loginBtn} onClick={onLoginClick}>
-                Log In
-              </button>
-
-              <button
-                className={css.registerBtn}
-                onClick={onRegisterClick}
-              >
-                Registration
-              </button>
-            </>
-          ) : (
-            <div className={css.profile}>
-              <div className={css.userBox}>
-                <div className={css.userIcon}>
-                  <svg width="24" height="24">
-                    <use href={`${sprite}#icon-mdi_user`} />
-                  </svg>
+                <button
+                  className={css.registerBtn}
+                  onClick={onRegisterClick}
+                >
+                  Registration
+                </button>
+              </>
+            ) : (
+              <div className={css.profile}>
+                <div className={css.userBox}>
+                  <div className={css.userIcon}>
+                    <svg width="24" height="24">
+                      <use href={`${sprite}#icon-mdi_user`} />
+                    </svg>
+                  </div>
+ 
+                  <span className={css.username}>
+                    {user?.displayName || "User"}
+                  </span>
                 </div>
-
-                <span className={css.username}>
-                  {user?.displayName || "User"}
-                </span>
+ 
+                <button
+                  onClick={handleLogout}
+                  className={css.logoutBtn}
+                >
+                  Log out
+                </button>
               </div>
-
-              <button
-                onClick={handleLogout}
-                className={css.logoutBtn}
-              >
-                Log out
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
 
         

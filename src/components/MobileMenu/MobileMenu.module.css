@@ -178,12 +178,14 @@
     padding: 14px 80px;
     width: 100%;
     background-color: transparent;
-    height: 48px;
+    height: 50px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 125%;
     letter-spacing: -0.01em;
     color: #fbfbfb;
+    display: flex; 
+    align-items: center;
 }
 
 .logoutBtn:hover,
