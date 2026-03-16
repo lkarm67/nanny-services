@@ -14,10 +14,18 @@
   position: relative;
   min-height: 489px;
   background: #fbfbfb;
-  padding: 64px;
+  padding: 64px 20px;
   border-radius: 30px;
   z-index: 5000;
 }
+
+@media screen and (min-width: 566px){
+  .modalContent{
+    padding: 64px;
+  }
+}
+
+
 
 .modalCloseButton{
     position: absolute;

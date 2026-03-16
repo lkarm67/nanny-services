@@ -8,6 +8,7 @@
     border-radius: 30px;
     overflow: hidden;
     max-width: 1184px;
+    width: 100%;
     background-color: #fbfbfb;
     padding: 0;
     display: flex;
@@ -15,16 +16,22 @@
     position: relative;
     margin-left: 0;
     margin-bottom: 0;
+    box-sizing: border-box;
 }
 
 .cardTop{
     max-width: 1184px;
+    width: 100%;
     background-color: #fbfbfb;
     padding: 24px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 24px;
 }
+
+
 
 .avatarWrapper{
     position: relative;
@@ -72,19 +79,25 @@
 .info {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 24px;
 }
 
 .infoTop {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
 .infoTopDetailesFav{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
 }
 
 .infoTopCategory{
@@ -103,15 +116,15 @@
 
 .infoTopDetailesWrapper{
     display: flex;
-    flex-direction: row;
-    gap: 48px;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .infoTopDetailesList{
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
 }
 
 .detailesBox + .detailesBox {
@@ -181,6 +194,8 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
     gap: 8px;
 }
 
@@ -232,20 +247,14 @@
 }
 
 .cardBottom {
-    padding: 24px 168px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    background-color: #fbfbfb;
-}
-
-.cardBottom {
     max-width: 1184px;
     width: 100%;
     margin-left: 0;
-    padding: 24px 168px;
+    padding: 12px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 24px;
     background-color: #fbfbfb;
 }
@@ -258,6 +267,8 @@
 .reviewItem{
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 16px;
     margin-bottom: 25px;
 }
@@ -333,4 +344,61 @@
     line-height: 125%;
     letter-spacing: -0.01em;
     color: #fbfbfb;
+}
+
+@media screen and (min-width: 1148px){
+    .cardTop{
+        flex-direction: row;
+        align-items: start;
+    }
+
+    .info{
+        align-items: start;
+    }
+
+    .infoTop{
+        width: 100%;
+        align-items: start;
+    }
+
+    .infoTopDetailesFav{
+        width: 100%;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+    .infoTopDetailesWrapper{
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 48px;
+    }
+
+    .infoTopDetailesList{
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .badgesList{
+        align-items: start;
+        justify-content: start;
+    }
+
+    .cardBottom{
+        align-items: start;
+        justify-content: start;
+        padding: 24px 168px;
+    }
+
+    .reviewsList{
+        align-items: start;
+        justify-content: start;
+        
+    }
+
+    .reviewItem{
+        align-items: start;
+    }
 }

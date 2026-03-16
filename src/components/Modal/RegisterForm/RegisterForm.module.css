@@ -1,24 +1,25 @@
 .registerModal {
-  width: 566px; 
+  width: 100%;  
+  max-width: 566px; 
 }
 
 .modalContentWrapper{
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 40px;
+    gap: 28px;
 }
 
 .modalHeader{
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 20px;
+    gap: 16px;
 }
 
 .modalTitle{
     font-weight: 600;
-    font-size: 40px;
+    font-size: 46px;
     line-height: 120%;
     letter-spacing: -0.02em;
     color: #11101c;
@@ -26,7 +27,7 @@
 
 .modalDescription{
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 150%;
     color: rgba(17, 16, 28, 0.5);
 }
@@ -34,7 +35,7 @@
 .modalForm{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
     width: 100%;
 }
 
@@ -57,7 +58,7 @@
     width: 100%;
     height: 52px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 125%;
     color: #11101c;
 }
@@ -91,14 +92,14 @@
 /* ❗ Прибираємо браузерну кнопку reveal */
 input::-ms-reveal,
 input::-ms-clear {
-  display: none;
+    display: none;
 }
 
 /* ❗ Chrome autofill */
 input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset;
-  -webkit-text-fill-color: #11101c;
-  transition: background-color 9999s ease-in-out 0s;
+    box-shadow: 0 0 0 1000px #fff inset;
+    -webkit-text-fill-color: #11101c;
+    transition: background-color 9999s ease-in-out 0s;
 }
 
 .modalSubmitButton{
@@ -112,4 +113,39 @@ input:-webkit-autofill {
     line-height: 125%;
     padding: 16px 18px;
     cursor: pointer;
+}
+
+.modalSubmitButton:hover{
+    background: #0749a1;
+}
+
+@media screen and (min-width: 566px){
+    .registerModal{
+      width: 566px;  
+    }
+
+    .modalContentWrapper{
+        gap: 40px;
+    }
+
+    .modalHeader{
+      gap: 20px;  
+    }
+
+    .modalTitle{
+        font-size: 40px;
+    }
+
+    .modalDescription{
+        font-size: 16px;
+    }
+
+    .modalForm{
+      gap: 18px;
+    }
+
+    .modalInput{
+      padding: 16px 40px 16px 18px;
+      font-size: 16px;  
+    }
 }

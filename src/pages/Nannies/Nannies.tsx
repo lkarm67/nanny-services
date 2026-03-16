@@ -58,7 +58,7 @@ const Nannies: React.FC = () => {
   console.log(nannies)
 
   return (
-    <div className={css.Page}>
+    <div className={css.page}>
       <FiltersBlock
         value={selectedOption}
         options={options}

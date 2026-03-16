@@ -87,7 +87,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
 
             <span className={css.onlineOuter}>
               <span className={css.onlineInner}></span>
-            </span>
+            </span>  
           </div>  
 
           {/* --- ГОЛОВНИЙ РЯД (ІНФО) --- */}

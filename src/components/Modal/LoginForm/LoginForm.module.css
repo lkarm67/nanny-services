@@ -1,24 +1,25 @@
 .loginModal{
-    width: 566px;
+    width: 100%;
+    max-width: 566px;
 }
 
 .modalContentWrapper{
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 40px;
+    gap: 28px;
 }
 
 .modalHeader{
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 20px;
+    gap: 16px;
 }
 
 .modalTitle{
     font-weight: 600;
-    font-size: 40px;
+    font-size: 46px;
     line-height: 120%;
     letter-spacing: -0.02em;
     color: #11101c;
@@ -26,7 +27,7 @@
 
 .modalDescription{
     font-weight: 400;
-    font-size: 16px;
+    font-size: 20px;
     line-height: 150%;
     color: rgba(17, 16, 28, 0.5);
 }
@@ -34,7 +35,7 @@
 .modalForm{
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 22px;
     width: 100%;
 }
 
@@ -53,11 +54,11 @@
 .modalInput{
     border: 1px solid rgba(17, 16, 28, 0.1);
     border-radius: 12px;
-    padding: 16px 40px 16px 18px;
+    padding: 16px 36px 16px 14px;
     width: 100%;
     height: 52px;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 125%;
     color: #11101c;
 }
@@ -117,6 +118,94 @@ input:-webkit-autofill {
 .modalSubmitButton:hover{
     background: #0749a1;
 }
+
+
+
+@media screen and (min-width: 566px){
+    .loginModal{
+      width: 566px;  
+    }
+
+    .modalContentWrapper{
+        gap: 40px;
+    }
+
+    .modalHeader{
+      gap: 20px;  
+    }
+
+    .modalTitle{
+        font-size: 40px;
+    }
+
+    .modalDescription{
+        font-size: 16px;
+    }
+
+    .modalForm{
+      gap: 18px;
+    }
+
+    .modalInput{
+      padding: 16px 40px 16px 18px;
+      font-size: 16px;  
+    }
+}
+
+
+/*
+
+
+.passwordToggle{
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.passwordIcon{
+    width: 20px;
+    height: 20px;
+    stroke: #11101C;
+    fill: none;
+    pointer-events: none;
+}
+
+/* ❗ Прибираємо браузерну кнопку reveal 
+input::-ms-reveal,
+input::-ms-clear {
+  display: none;
+}
+
+/* ❗ Chrome autofill 
+input:-webkit-autofill {
+  box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #11101c;
+  transition: background-color 9999s ease-in-out 0s;
+}
+
+.modalSubmitButton{
+    margin-top: 20px;
+    background: #0957c3;
+    border-radius: 30px;
+    border: none;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 125%;
+    padding: 16px 18px;
+    cursor: pointer;
+}
+
+.modalSubmitButton:hover{
+    background: #0749a1;
+}*/
 
 
 

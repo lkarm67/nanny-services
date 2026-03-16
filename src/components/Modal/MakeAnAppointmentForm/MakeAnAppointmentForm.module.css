@@ -1,5 +1,6 @@
 .makeAnAppointmentModal{
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
   margin: auto;
   max-height: 90vh;
   overflow-y: auto;  
@@ -77,8 +78,8 @@
 .fieldsWrapper{
     display: flex;
     flex-direction: row;
-    flex-wrap: nowrap;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 18px;
 }
 
 .modalFieldGroup{
@@ -233,4 +234,13 @@
 
 .modalSubmitButton:hover{
     background: #0749a1;
+}
+
+@media screen and (min-width: 460px) {
+  .fieldsWrapper{
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+    
 }
