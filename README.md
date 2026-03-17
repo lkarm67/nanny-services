@@ -28,7 +28,6 @@ The project is built as a **Single Page Application (SPA)** using modern fronten
 * React Hook Form
 * Yup (form validation)
 * React Hot Toast (notifications)
-* Day.js (date formatting)
 * CSS Modules
 
 ---
@@ -113,7 +112,7 @@ src
 ### 1. Clone the repository
 
 ```
-git clone https://github.com/your-username/nanny-services.git
+git clone https://github.com/lkarm67/nanny-services.git
 ```
 
 ### 2. Navigate to the project folder

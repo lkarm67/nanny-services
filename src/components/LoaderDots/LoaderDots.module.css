@@ -8,7 +8,7 @@
 .dots span {
   width: 8px;
   height: 8px;
-  background: #4a90e2; /* можна змінити колір */
+  background: #0957c3; /* можна змінити колір */
   border-radius: 50%;
   animation: bounce 0.6s infinite alternate;
 }

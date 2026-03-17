@@ -20,23 +20,23 @@ export const ModalForm: React.FC<ModalFormProps> = ({
 }) => {
 
   useEffect(() => {
-  if (isOpen) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "";
-  }
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
 
-  const handleEsc = (e: KeyboardEvent) => {
-    if (e.key === "Escape") onClose();
-  };
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
 
-  document.addEventListener("keydown", handleEsc);
+    document.addEventListener("keydown", handleEsc);
 
-  return () => {
-    document.removeEventListener("keydown", handleEsc);
-    document.body.style.overflow = "";
-  };
-}, [isOpen, onClose]);
+    return () => {
+      document.removeEventListener("keydown", handleEsc);
+      document.body.style.overflow = "";
+    };
+  }, [isOpen, onClose]);
 
   const handleBackdrop = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) onClose();

@@ -240,7 +240,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
             </div>
           </div>
 
-          <div className={css.modalFieldGroup}>
+          <div className={`${css.fieldGroup} ${css.fullWidth}`}>
             <input
               type="email"
               className={errors.email ? css.modalInputError : css.modalInput}

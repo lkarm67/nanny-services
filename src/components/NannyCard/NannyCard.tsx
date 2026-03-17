@@ -6,8 +6,6 @@ import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
 import { useFavorites } from "../../context/FavoritesContext";
 
-/*import { toggleFavoriteInFirebase } from '../../services/favoritesService';*/
-
 interface NannyCardProps {
   nanny: Nanny & {
     reviews?: { reviewer: string; rating: number; comment: string }[];
@@ -22,20 +20,6 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
   const { favorites, toggleFavorite } = useFavorites();
 
   const isFavorite = favorites.includes(nanny.id);
-
- /* const handleFavorite = async () => {
-
-   /* if (!isLoggedIn) {
-      onMakeAnAppointmentClick(nanny);
-      return;
-    }
-
-    const key = formatKey(nanny);
-
-    toggleFavorite(key);
-
-    /*await toggleFavoriteInFirebase(key, isFavorite);
-  }; */
 
   const handleFavorite = () => {
 
@@ -60,7 +44,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
     window.addEventListener('keydown', handleEsc);
     
     return () => {
-        window.removeEventListener('keydown', handleEsc);
+      window.removeEventListener('keydown', handleEsc);
     };
   }, [isOpen]);
 
@@ -184,10 +168,6 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
             onClick={() => {
               onMakeAnAppointmentClick?.(nanny);
             }}
-           /*} onClick={() => {
-              setIsOpen(false);
-              setIsModalOpen(true);
-            }}*/
             className={css.makeAppointmentButton}
           >
             Make an appointment
@@ -196,16 +176,8 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
         </div>
       )}
 
-      {/* --- МОДАЛЬНЕ ВІКНО ЗАПИСУ НА ПРИЙОМ --- */}
-      {/*<MakeAnAppointmentForm 
-        isOpen={isModalOpen} 
-        onClose={() => setIsModalOpen(false)}
-        nanny={nanny} 
-        onMakeAppointmentClick={() => setIsModalOpen(false)} 
-      />*/}
       </div>
     </>
-
   );
 };
 

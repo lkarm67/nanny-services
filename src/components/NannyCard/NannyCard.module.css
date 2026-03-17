@@ -31,8 +31,6 @@
     gap: 24px;
 }
 
-
-
 .avatarWrapper{
     position: relative;
     border: 2px solid rgba(240, 63, 59, 0.2);
@@ -55,25 +53,25 @@
 }
 
 .onlineOuter {
-  position: absolute;
-  top: 0;
-  right: 0;
-  transform: translate(-50%, 50%);
-  width: 14px;
-  height: 14px;
-  background-color: white;
-  border-radius: 50%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-50%, 50%);
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    border-radius: 50%;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .onlineInner {
-  width: 10px;
-  height: 10px;
-  background-color: #4caf50;
-  border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #4caf50;
+    border-radius: 50%;
 }
 
 .info {
@@ -185,9 +183,9 @@
 }
 
 .heartActive {
-  fill: #0957c3;
-  stroke: transparent;
-  animation: heartPulse 0.35s ease;
+    fill: #0957c3;
+    stroke: transparent;
+    animation: heartPulse 0.35s ease;
 }
 
 .badgesList{

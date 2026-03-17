@@ -5,7 +5,6 @@ import App from "./App";
 import "./styles/global.css";
 import { FavoritesProvider } from "./context/FavoritesContext";
 
-
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <BrowserRouter>

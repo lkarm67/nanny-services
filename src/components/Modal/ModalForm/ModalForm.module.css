@@ -28,18 +28,18 @@
 
 
 .modalCloseButton{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .modalCloseIcon{
-    width: 32px;
-    height: 32px;
-    stroke: #11101C;
+  width: 32px;
+  height: 32px;
+  stroke: #11101C;
 }
 
 

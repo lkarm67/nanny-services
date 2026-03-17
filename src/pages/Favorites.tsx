@@ -67,7 +67,7 @@ const Favorites: React.FC = () => {
   };
 
   return (
-    <div className={css.Page}>
+    <div className={css.page}>
       <FiltersBlock
         value={selectedOption}
         options={options}

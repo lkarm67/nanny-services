@@ -4,8 +4,6 @@ import type { User } from "firebase/auth";
 import type { Nanny } from "./types/nannies";
 import type { LayoutContextType } from "./types/layoutContext";import { useLocation } from "react-router-dom";
 
-
-
 interface LayoutProps {
   user: User | null;
   openLogin: () => void;

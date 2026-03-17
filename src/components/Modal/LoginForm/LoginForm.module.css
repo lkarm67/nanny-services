@@ -46,9 +46,9 @@
 }
 
 .modalInputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
+    position: relative;
+    display: flex;
+    align-items: center;
 }
 
 .modalInput{
@@ -61,6 +61,15 @@
     font-size: 14px;
     line-height: 125%;
     color: #11101c;
+}
+
+.modalInput::placeholder {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 125%;
+    color: #11101c;
+    opacity: 1;
 }
 
 .error{
@@ -92,14 +101,14 @@
 /* ❗ Прибираємо браузерну кнопку reveal */
 input::-ms-reveal,
 input::-ms-clear {
-  display: none;
+    display: none;
 }
 
 /* ❗ Chrome autofill */
 input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset;
-  -webkit-text-fill-color: #11101c;
-  transition: background-color 9999s ease-in-out 0s;
+    box-shadow: 0 0 0 1000px #fff inset;
+    -webkit-text-fill-color: #11101c;
+    transition: background-color 9999s ease-in-out 0s;
 }
 
 .modalSubmitButton{
@@ -131,7 +140,7 @@ input:-webkit-autofill {
     }
 
     .modalHeader{
-      gap: 20px;  
+        gap: 20px;  
     }
 
     .modalTitle{
@@ -143,205 +152,17 @@ input:-webkit-autofill {
     }
 
     .modalForm{
-      gap: 18px;
+        gap: 18px;
     }
 
     .modalInput{
-      padding: 16px 40px 16px 18px;
-      font-size: 16px;  
+        padding: 16px 40px 16px 18px;
+        font-size: 16px;  
+    }
+
+    .modalInput::placeholder{
+        font-size: 16px;
     }
 }
 
 
-/*
-
-
-.passwordToggle{
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-.passwordIcon{
-    width: 20px;
-    height: 20px;
-    stroke: #11101C;
-    fill: none;
-    pointer-events: none;
-}
-
-/* ❗ Прибираємо браузерну кнопку reveal 
-input::-ms-reveal,
-input::-ms-clear {
-  display: none;
-}
-
-/* ❗ Chrome autofill 
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset;
-  -webkit-text-fill-color: #11101c;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-.modalSubmitButton{
-    margin-top: 20px;
-    background: #0957c3;
-    border-radius: 30px;
-    border: none;
-    color: #fff;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-    padding: 16px 18px;
-    cursor: pointer;
-}
-
-.modalSubmitButton:hover{
-    background: #0749a1;
-}*/
-
-
-
-
-
-/*.backdrop{
-    position: fixed;
-    inset: 0;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-.modal{
-    border-radius: 30px;
-    width: 565px;
-    min-height: 489px;
-    background: #fbfbfb;
-    padding: 64px;
-    position: relative;
-    z-index: 5000;
-}
-
-.closeButton{
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    background: none;
-    border: none;
-    cursor: pointer;
-}
-
-.closeIcon{
-    width: 32px;
-    height: 32px;
-    stroke: #11101C;
-}
-
-.wrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 40px;
-}
-
-.content{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 20px;
-}
-
-.title{
-    font-weight: 600;
-    font-size: 40px;
-    line-height: 120%;
-    letter-spacing: -0.02em;
-    color: #11101c;
-}
-
-.description{
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 150%;
-    color: rgba(17, 16, 28, 0.5);
-}
-
-.form{
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    width: 100%;
-}
-
-.fieldGroup{
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-}
-
-.inputWrapper {
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-
-.input{
-    border: 1px solid rgba(17, 16, 28, 0.1);
-    border-radius: 12px;
-    padding: 16px 40px 16px 18px;
-    width: 100%;
-    height: 52px;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 125%;
-    color: #11101c;
-}
-
-.passwordToggle{
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0;
-}
-.passwordIcon{
-    width: 20px;
-    height: 20px;
-    stroke: #11101C;
-    fill: none;
-    pointer-events: none;
-}
-
-/* ❗ Прибираємо браузерну кнопку reveal 
-input::-ms-reveal,
-input::-ms-clear {
-  display: none;
-}
-
-/* ❗ Chrome autofill 
-input:-webkit-autofill {
-  box-shadow: 0 0 0 1000px #fff inset;
-  -webkit-text-fill-color: #11101c;
-  transition: background-color 9999s ease-in-out 0s;
-}
-
-*/

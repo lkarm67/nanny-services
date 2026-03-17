@@ -39,43 +39,43 @@
 }
 
 .headerContainer{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo{
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 117%;
-    letter-spacing: -0.02em;
-    color: #fbfbfb;
-    padding: 10px 0;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 117%;
+  letter-spacing: -0.02em;
+  color: #fbfbfb;
+  padding: 10px 0;
 }
 
 /* MOBILE */
 .nav{
-    display: none;
+  display: none;
 }
 
 .authBlock{
-    display: none;
+  display: none;
 }
 
 .burger{
-    color: #fbfbfb;
-    padding: 0 48px;
-    background-color: transparent;
+  color: #fbfbfb;
+  padding: 0 48px;
+  background-color: transparent;
 }
 
 .menu {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    stroke-width: 0;
-    stroke: currentColor;
-    fill: currentColor;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
 }
 
 /* TABLET */
@@ -255,5 +255,17 @@
 
   .nav{
     gap: 40px;
+  }
+
+  .homeHeader .loginBtn {
+    background-color: transparent;
+    color: #fbfbfb;
+    border: 1px solid #fbfbfb;
+  }
+
+  .homeHeader .registerBtn {
+    color: #fbfbfb;
+    background-color: #0957c3;
+    border: none;
   }
 }

@@ -12,7 +12,7 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
   const [favorites, setFavorites] = useState<string[]>(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : []; 
-});
+  });
 
   const toggleFavorite = (id: string) => {
     setFavorites(prev => {
