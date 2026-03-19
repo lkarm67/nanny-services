@@ -8,7 +8,7 @@ import { LoginForm } from "./components/Modal/LoginForm/LoginForm";
 import { RegisterForm } from "./components/Modal/RegisterForm/RegisterForm";
 import ProtectedRoute from "./components/ProtectedRoute"; 
 import { useState } from "react";
-import { useAuth } from "./hooks/useAuth";
+import { useAuth } from "./context/AuthContext";
 import MakeAnAppointmentForm from "./components/Modal/MakeAnAppointmentForm/MakeAnAppointmentForm";
 
 const App: React.FC = () => {

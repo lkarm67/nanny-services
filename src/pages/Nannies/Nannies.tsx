@@ -15,7 +15,7 @@ import { useNanniesQuery } from "../../hooks/useNanniesQuery";
 import { processNannies } from "../../utils/nannyQueryProcessor";
 import css from "./Nannies.module.css"
 import LoaderDots from "../../components/LoaderDots/LoaderDots";
-import { useAuth } from "../../hooks/useAuth";
+import { useAuth } from "../../context/AuthContext";
 
 
 

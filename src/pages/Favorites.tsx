@@ -14,7 +14,7 @@ import {
   PriceFilterType,
   SortType,
 } from "../types/filters";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../context/AuthContext";
 import { useNannies } from "../hooks/useNannies";
 
 const Favorites: React.FC = () => {
