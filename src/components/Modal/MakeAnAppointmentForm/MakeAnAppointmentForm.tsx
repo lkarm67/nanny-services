@@ -4,7 +4,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import toast from "react-hot-toast";
 import css from "./MakeAnAppointmentForm.module.css";
-import sprite from "../../../assets/symbol-defs.svg";
 import type { Nanny } from "../../../types/nannies";
 import { ModalForm } from "../ModalForm/ModalForm";
 
@@ -209,7 +208,7 @@ export const MakeAnAppointmentForm: React.FC<ModalProps> = ({
                     width="20"
                     height="20"
                   >
-                    <use href={`${sprite}#icon-clock`} />
+                    <use href="/sprite.svg#icon-clock" />
                   </svg>
                 </button>
 

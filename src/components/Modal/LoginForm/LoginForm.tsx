@@ -4,7 +4,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
 import css from "./LoginForm.module.css";
-import sprite from "../../../assets/symbol-defs.svg";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../firebase";
 
@@ -110,7 +109,7 @@ export const LoginForm: React.FC<Props> = ({ isOpen, onClose }) => {
                 aria-label="Toggle password visibility"
               >
                 <svg className={css.passwordIcon} viewBox="0 0 32 32" width="20" height="20">
-                  <use href={`${sprite}#${showPassword ? "icon-eye-open" : "icon-eye-off"}`} />
+                  <use href={`/sprite.svg#${showPassword ? "icon-eye-open" : "icon-eye-off"}`} />
                 </svg>
               </button>
             </div>  

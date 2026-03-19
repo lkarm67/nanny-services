@@ -1,6 +1,5 @@
 import React from 'react';
 import css from './NannyCard.module.css';
-import sprite from "../../assets/symbol-defs.svg";
 
 interface Review {
   reviewer: string;
@@ -23,7 +22,7 @@ export const ReviewItem: React.FC<ReviewItemProps> = ({ review }) => {
           <p className={css.reviewReviewer}>{review.reviewer}</p>
           <div className={css.starReting}>
             <svg className={css.reviewStarReting} width="16" height="16">
-              <use href={`${sprite}#icon-star`} />
+              <use href="/sprite.svg#icon-star" />
             </svg>
             <span className={css.ratingText}> {review.rating}</span>
           </div>

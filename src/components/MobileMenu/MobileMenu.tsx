@@ -3,7 +3,6 @@ import css from "./MobileMenu.module.css";
 import type { User } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
-import sprite from "../../assets/symbol-defs.svg";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -34,7 +33,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
       <div className={css.mobileMenu} onClick={(e) => e.stopPropagation()}>
         <button className={css.closeBtn} onClick={onClose}>
           <svg className={css.closeIcon} width="32" height="32">
-            <use href={`${sprite}#icon-x`} />
+            <use href="/sprite.svg#icon-x" />
           </svg>
         </button>
         <div className={css.menuContent}>
@@ -100,7 +99,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             <div className={css.userBox}>
               <div className={css.userIcon}>
                 <svg width="24" height="24">
-                  <use href={`${sprite}#icon-mdi_user`} />
+                  <use href="/sprite.svg#icon-mdi_user" />
                 </svg>
               </div>
               <span className={css.username}>

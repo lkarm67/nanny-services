@@ -2,7 +2,6 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import css from './RegisterForm.module.css';
-import sprite from "../../../assets/symbol-defs.svg";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase";
 import { FirebaseError } from "firebase/app";
@@ -134,7 +133,7 @@ export const RegisterForm: React.FC<ModalProps> = ({ isOpen, onClose }) => {
                 aria-label="Toggle password visibility"
               >
                 <svg className={css.passwordIcon} viewBox="0 0 32 32" width="20" height="20">
-                  <use href={`${sprite}#${showPassword ? "icon-eye-open" : "icon-eye-off"}`} />
+                  <use href={`/sprite.svg#${showPassword ? "icon-eye-open" : "icon-eye-off"}`} />
                 </svg>
               </button>
             </div>  

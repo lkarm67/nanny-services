@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import css from "./FiltersBlock.module.css";
-import sprite from "../../assets/symbol-defs.svg";
 import { filterLabels } from "../../types/filters";
 
 interface FiltersBlockProps<T extends keyof typeof filterLabels> {
@@ -45,7 +44,7 @@ export const FiltersBlock = <T extends keyof typeof filterLabels>({
           width="20"
           height="20"
         >
-          <use href={`${sprite}#icon-chevron-down`} />
+          <use href="/sprite.svg#icon-chevron-down" />
         </svg>
       </button>
 

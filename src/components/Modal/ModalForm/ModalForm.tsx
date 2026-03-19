@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { createPortal } from "react-dom";
 import css from "./ModalForm.module.css";
-import sprite from "../../../assets/symbol-defs.svg";
 
 interface ModalFormProps {
   children: React.ReactNode;
@@ -50,7 +49,7 @@ export const ModalForm: React.FC<ModalFormProps> = ({
       >
         <button className={css.modalCloseButton} onClick={onClose}>
           <svg className={css.modalCloseIcon}>
-            <use href={`${sprite}#icon-x`} />
+            <use href="/sprite.svg#icon-x" />
           </svg>
         </button>
 

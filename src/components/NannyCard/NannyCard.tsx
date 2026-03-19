@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { Nanny } from '../../types/nannies';
 import css from './NannyCard.module.css';
-import sprite from "../../assets/symbol-defs.svg";
 import { useAge } from '../../hooks/useAge';
 import { ReviewItem } from './ReviewItem';
 import { useFavorites } from "../../context/FavoritesContext";
@@ -83,14 +82,14 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
                   <ul className={css.infoTopDetailesList}>
                     <li className={css.detailesBox}> 
                       <svg width="16" height="16">
-                        <use href={`${sprite}#icon-map-pin`} />
+                        <use href="/sprite.svg#icon-map-pin" />
                       </svg> 
                       <span className={css.detailesText}>{nanny.location}</span> 
                     </li>
                   
                     <li className={css.detailesBox}>
                       <svg width="16" height="16">
-                        <use href={`${sprite}#icon-star`} />
+                        <use href="/sprite.svg#icon-star" />
                       </svg> 
                       <span className={css.detailesText}>Rating: {nanny.rating}</span>
                     </li>                  
@@ -105,7 +104,7 @@ export const NannyCard: React.FC<NannyCardProps> = ({ nanny, isLoggedIn, onMakeA
                     onClick={handleFavorite}
                   >
                     <svg className={isFavorite ? css.heartActive : css.heartIcon} width="26" height="26" aria-label="Add to favorites">
-                      <use href={`${sprite}#icon-heart`} />
+                      <use href="/sprite.svg#icon-heart" />
                     </svg>
                   </button>
                 </div>

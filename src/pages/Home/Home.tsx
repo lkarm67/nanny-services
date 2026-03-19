@@ -3,7 +3,6 @@ import css from "./Home.module.css";
 import type { User } from "firebase/auth";
 import heroImage1x from "../../assets/heroImage1x.jpg";
 import heroImage2x from "../../assets/heroImage2x.jpg";
-import sprite from "../../assets/symbol-defs.svg";
 
 interface HomeProps {
     user: User | null;
@@ -35,7 +34,7 @@ const Home: React.FC<HomeProps> = () => {
           <button className={css.heroButton} onClick={handleClick}>
             Get started
             <svg width="14" height="16">
-              <use href={`${sprite}#icon-Arrow`} />
+              <use href="/sprite.svg#icon-Arrow" />
             </svg>
           </button>
         </div>
@@ -52,7 +51,7 @@ const Home: React.FC<HomeProps> = () => {
         <div className={css.nannyQuantityBox}>
           <div className={css.iconBox}>
             <svg className={css.checkIcon} width="30" height="30">
-              <use href={`${sprite}#icon-fe_check`} />
+              <use href="/sprite.svg#icon-fe_check" />
             </svg>
           </div>
 

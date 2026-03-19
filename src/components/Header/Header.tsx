@@ -4,7 +4,6 @@ import css from "./Header.module.css";
 import { signOut } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { auth } from "../../firebase";
-import sprite from "../../assets/symbol-defs.svg";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
 interface HeaderProps {
@@ -110,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({
                 <div className={css.userBox}>
                   <div className={css.userIcon}>
                     <svg width="24" height="24">
-                      <use href={`${sprite}#icon-mdi_user`} />
+                      <use href="/sprite.svg#icon-mdi_user" />
                     </svg>
                   </div>
  
@@ -138,7 +137,7 @@ const Header: React.FC<HeaderProps> = ({
           aria-label="Open menu"
         >
           <svg className={css.menu} width="32" height="32">
-            <use href={`${sprite}#icon-menu`}></use>
+            <use href="/sprite.svg#icon-menu" />
           </svg>
         </button>
 
