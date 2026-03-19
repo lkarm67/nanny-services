@@ -31,9 +31,7 @@ const App: React.FC = () => {
     setIsMakeAppointmentOpen(true);
   };
   
-  const { user, loading } = useAuth();
-
-  if (loading) return null;
+  const { user } = useAuth();
 
   return (
     <>
