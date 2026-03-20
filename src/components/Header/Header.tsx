@@ -5,6 +5,7 @@ import { signOut } from "firebase/auth";
 import type { User } from "firebase/auth";
 import { auth } from "../../firebase";
 import MobileMenu from "../MobileMenu/MobileMenu";
+import { useFavorites  } from "../../context/FavoritesContext";
 
 interface HeaderProps {
   user: User | null;
@@ -36,9 +37,12 @@ const Header: React.FC<HeaderProps> = ({
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+  
+  const { clearFavorites } = useFavorites();
 
   const handleLogout = async () => {
     await signOut(auth);
+    clearFavorites();
     navigate("/");
   };
 

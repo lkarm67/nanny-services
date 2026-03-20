@@ -4,6 +4,7 @@ import { createContext, useContext, useState } from "react";
 interface FavoritesContextType {
   favorites: string[];
   toggleFavorite: (id: string) => void;
+  clearFavorites: () => void;
 };
 
 const FavoritesContext = createContext<FavoritesContextType | null>(null);
@@ -29,8 +30,13 @@ export const FavoritesProvider: React.FC<{ children: React.ReactNode }> = ({ chi
     });
   };
 
+  const clearFavorites = () => {
+  setFavorites([]);
+  localStorage.removeItem("favorites");
+};
+
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider value={{ favorites, toggleFavorite, clearFavorites }}>
       {children}
     </FavoritesContext.Provider>
   );

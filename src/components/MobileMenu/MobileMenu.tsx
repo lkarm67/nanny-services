@@ -3,6 +3,7 @@ import css from "./MobileMenu.module.css";
 import type { User } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase";
+import { useFavorites } from "../../context/FavoritesContext";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -19,8 +20,11 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 }) => {
   const navigate = useNavigate();
 
+  const { clearFavorites } = useFavorites();
+
   const handleLogout = async () => {
     await signOut(auth);
+    clearFavorites();
     navigate("/");
     onClose();
   };
